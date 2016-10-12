@@ -8,7 +8,7 @@
     "type": "git"
   },
   "scripts": {
-    "start": "node -r ./bin/babel ./bin/start"
+    "start": "node -r ./bin/hooks ./bin/start"
   },
   "author": "Sergey Sova <i.am@lestad.net> (https://lestad.top)",
   "license": "MIT",

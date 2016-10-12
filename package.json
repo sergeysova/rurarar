@@ -8,5 +8,9 @@
     "type": "git"
   },
   "author": "Sergey Sova <i.am@lestad.net> (https://lestad.top)",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2"
+  }
 }

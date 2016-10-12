@@ -7,10 +7,14 @@
     "url": "git@github.com:LestaD/rurarar.git",
     "type": "git"
   },
+  "scripts": {
+    "start": "node -r ./bin/babel ./bin/start"
+  },
   "author": "Sergey Sova <i.am@lestad.net> (https://lestad.top)",
   "license": "MIT",
   "dependencies": {
     "babel-core": "^6.17.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.16.0",
     "babel-register": "^6.16.3",
     "react": "^15.3.2",
     "react-dom": "^15.3.2"

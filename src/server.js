@@ -33,7 +33,7 @@ if (global.NODE_ENV === 'development') {
   app.use(webpackHotMiddleware(compiler))
 }
 
-
+app.use(Express.static('dist'))
 app.get('*', handleRender)
 app.listen(config.port, err =>
   err

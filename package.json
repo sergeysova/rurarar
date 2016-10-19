@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "node -r ./bin/hooks ./bin/start",
-    "build": "NODE_ENV=production webpack webpack/prod.config.js"
+    "build": "NODE_ENV=production webpack --config webpack/prod.config.js"
   },
   "author": "Sergey Sova <i.am@lestad.net> (https://lestad.top)",
   "license": "MIT",

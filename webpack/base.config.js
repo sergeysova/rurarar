@@ -1,8 +1,8 @@
-import { join, resolve } from 'path'
+const { join, resolve } = require('path')
 
 const root = join(__dirname, '..')
 
-export default {
+module.exports = {
   entry: './client',
   outputPath: resolve(root, 'dist'),
   context: resolve(root, 'src'),

@@ -4,7 +4,9 @@ import config from './base.config'
 
 
 export default {
+  target: 'web',
   devtool: 'eval',
+  context: config.context,
   entry: {
     main: [
       'webpack-hot-middleware/client',

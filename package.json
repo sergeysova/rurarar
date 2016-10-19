@@ -26,6 +26,7 @@
     "react-dom": "^15.3.2"
   },
   "devDependencies": {
+    "babel-loader": "^6.2.5",
     "webpack": "^1.13.2",
     "webpack-dev-middleware": "^1.8.4",
     "webpack-hot-middleware": "^2.13.0"

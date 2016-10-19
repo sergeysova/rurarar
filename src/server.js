@@ -7,6 +7,7 @@ import App from 'app'
 
 const app = Express()
 
+// DEVELOPMENT MODE
 if (global.NODE_ENV === 'development') {
   console.log('Enabled development mode.')
 
@@ -32,6 +33,7 @@ if (global.NODE_ENV === 'development') {
   app.use(middleware)
   app.use(webpackHotMiddleware(compiler))
 }
+// \DEVELOPMENT MODE
 
 app.use('/dist', Express.static('dist'))
 app.get('*', handleRender)

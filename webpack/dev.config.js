@@ -1,7 +1,7 @@
 import { HotModuleReplacementPlugin, optimize } from 'webpack'
 const { OccurrenceOrderPlugin } = optimize
 import config from './base.config'
-import loaders from './loaders'
+import { loaders } from './loaders'
 
 
 export default {
@@ -20,7 +20,7 @@ export default {
     filename: 'bundle.js',
     publicPath: '/dist/',
   },
-  modules: {
+  module: {
     loaders,
   },
   plugins: [

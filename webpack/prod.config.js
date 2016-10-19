@@ -1,6 +1,6 @@
 const { HotModuleReplacementPlugin, optimize: { OccurrenceOrderPlugin, DedupePlugin, UglifyJsPlugin } } = require('webpack')
 const config = require('./base.config')
-const loaders = require('./loaders')
+const { loaders } = require('./loaders')
 
 module.exports = {
   target: 'web',

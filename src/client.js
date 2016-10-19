@@ -1,6 +1,8 @@
 
-console.log('Client runned')
+import 'babel-polyfill'
+import React from 'react'
+import ReactDOM from 'react-dom'
 
-class Demo {
-  static b() {}
-}
+import App from './app'
+
+ReactDOM.render(React.createElement(App, null), document.getElementById('wbpp'))

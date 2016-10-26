@@ -1,9 +1,6 @@
-import React from 'react'
 import Express from 'express'
-import { renderToString } from 'react-dom/server'
 
-import config from '../webpack/dev.config'
-import App from 'app'
+import config from '../../webpack/dev.config'
 
 const app = Express()
 
@@ -36,28 +33,17 @@ if (global.NODE_ENV === 'development') {
 // \DEVELOPMENT MODE
 
 app.use('/dist', Express.static('dist'))
-app.get('*', handleRender)
+app.get('*', require('server/render').default)
+
+if (global.NODE_ENV === 'development') {
+
+}
+else {
+
+}
+
 app.listen(config.port, err =>
   err
     ? console.error('ERROR', err)
     : console.log(`Listen ${config.port} port...`)
 )
-
-function handleRender(req, res) {
-  res.send(renderPage(renderToString(<App />)))
-}
-
-function renderPage(html) {
-  return `
-    <!doctype html>
-    <html>
-      <head>
-        <title>Example app</title>
-      </head>
-      <body>
-        <div id="wbpp">${html}</div>
-        <script src="/dist/bundle.js"></script>
-      </body>
-    </html>
-  `
-}

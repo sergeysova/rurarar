@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "node -r ./bin/hooks ./bin/start",
-    "dev": "DEBUG=APP:* DEBUG_COLORS=1 NODE_ENV=development npm start",
+    "dev": "DEBUG=APP:* DEBUG_COLORS=1 NODE_ENV=development nodemon -x \"npm start\" --ignore ./",
     "build": "NODE_ENV=production webpack --config webpack/prod.config.js"
   },
   "author": "Sergey Sova <i.am@lestad.net> (https://lestad.top)",
@@ -29,9 +29,11 @@
   },
   "devDependencies": {
     "babel-loader": "^6.2.5",
+    "babel-polyfill": "^6.16.0",
+    "babel-preset-react-hmre": "^1.1.1",
     "chokidar": "^1.6.1",
     "debug": "^2.2.0",
-    "babel-polyfill": "^6.16.0",
+    "nodemon": "^1.11.0",
     "webpack": "^1.13.2",
     "webpack-dev-middleware": "^1.8.4",
     "webpack-hot-middleware": "^2.13.0"

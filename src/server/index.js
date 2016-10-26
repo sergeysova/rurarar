@@ -34,20 +34,25 @@ if (global.NODE_ENV === 'development') {
   app.use(middleware)
   app.use(webpackHotMiddleware(compiler))
 
-  watcher.on('ready', () => {
-    watcher.on('all', () => {
-      LOG('Clearing module cache')
-      Object.keys(require.cache).forEach(id => {
-        if (/[\/\\]src[\/\\]/.test(id)) delete require.cache[id]
+  function clearDependencies(regexp) {
+    return Object.keys(require.cache)
+      .filter(id => regexp.test(id))
+      .map(id => {
+        delete require.cache[id]
+        return id
       })
+  }
+
+  watcher.on('ready', () => {
+    watcher.on('all', (e, path) => {
+      LOG('Clearing module cache', e, path)
+      LOG('Cleared:', clearDependencies(/[\/\\]src[\/\\]/))
     })
   })
 
   compiler.plugin('done', () => {
     LOG('Clearing react module cache')
-    Object.keys(require.cache).forEach(id => {
-      if (/[\/\\]src[\/\\]app[\/\\]/.test(id)) delete require.cache[id]
-    })
+    LOG('Cleared:', clearDependencies(/[\/\\]src[\/\\]/))
   })
 }
 // \DEVELOPMENT MODE

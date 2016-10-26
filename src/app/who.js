@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 const random = () => Math.floor(Math.random() * 50) / 10
 
 
-export default class App extends Component {
+export default class Who extends Component {
   state = { value: 0 }
   onChange = this.onChange.bind(this)
 
@@ -17,9 +17,10 @@ export default class App extends Component {
 
   render() {
     return (
-      <div style={{ padding: '20px', textAlign: 'center', width: '100%' }}>
+      <div>
         Hello World {this.state.value} <br/>
         <button onClick={this.onChange()}>Change</button>
+        <i>Examples?</i>
       </div>
     )
   }

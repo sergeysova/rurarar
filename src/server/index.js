@@ -36,6 +36,7 @@ if (global.NODE_ENV === 'development') {
 
   function clearDependencies(regexp) {
     return Object.keys(require.cache)
+      .filter(e => !((/node_modules/g).test(e)))
       .filter(id => regexp.test(id))
       .map(id => {
         delete require.cache[id]
@@ -54,11 +55,13 @@ if (global.NODE_ENV === 'development') {
     LOG('Clearing react module cache')
     LOG('Cleared:', clearDependencies(/[\/\\]src[\/\\]/))
   })
+
+  delete require.cache[require.resolve('server/render')]
 }
 // \DEVELOPMENT MODE
 
 app.use('/dist', Express.static('dist'))
-app.get('*', require('server/render').default)
+app.get('*', (req, res) => require('server/render').default(req, res))
 
 app.listen(config.port, err =>
   err

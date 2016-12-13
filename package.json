@@ -8,8 +8,9 @@
     "type": "git"
   },
   "scripts": {
-    "start": "NODE_ENV=production node -r ./bin/hooks ./bin/start",
-    "dev": "DEBUG=APP:* DEBUG_COLORS=1 NODE_ENV=development nodemon -x \"npm start\" --ignore ./",
+    "start": "NODE_ENV=production npm run run",
+    "run": "node -r ./bin/hooks ./bin/start",
+    "dev": "DEBUG=APP:* DEBUG_COLORS=1 NODE_ENV=development nodemon -x \"npm run run\" --ignore ./",
     "build": "NODE_ENV=production webpack --config webpack/prod.config.js"
   },
   "author": "Sergey Sova <i.am@lestad.net> (https://lestad.top)",

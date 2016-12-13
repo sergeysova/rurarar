@@ -117,3 +117,4 @@ jspm_packages
 
 # App
 dist
+.idea

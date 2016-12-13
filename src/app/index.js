@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import Who from './who'
+import Demo from './components/demo'
 
 
 export default class App extends Component {
@@ -8,6 +9,7 @@ export default class App extends Component {
     return (
       <div style={{ padding: '20px', textAlign: 'center', width: '100%' }}>
         <Who />
+        <Demo />
       </div>
     )
   }

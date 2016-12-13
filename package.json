@@ -8,7 +8,7 @@
     "type": "git"
   },
   "scripts": {
-    "start": "node -r ./bin/hooks ./bin/start",
+    "start": "NODE_ENV=production node -r ./bin/hooks ./bin/start",
     "dev": "DEBUG=APP:* DEBUG_COLORS=1 NODE_ENV=development nodemon -x \"npm start\" --ignore ./",
     "build": "NODE_ENV=production webpack --config webpack/prod.config.js"
   },

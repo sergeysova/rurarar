@@ -1,4 +1,4 @@
-import { HotModuleReplacementPlugin, optimize } from 'webpack'
+import { HotModuleReplacementPlugin, optimize, DefinePlugin } from 'webpack'
 const { OccurrenceOrderPlugin } = optimize
 import config from './base.config'
 import { loaders } from './loaders'
@@ -24,6 +24,13 @@ export default {
     loaders,
   },
   plugins: [
+    new DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify('development'),
+      },
+      __PRODUCTION__: false,
+      __DEVELOPMENT__: true,
+    }),
     new OccurrenceOrderPlugin(true),
     new HotModuleReplacementPlugin(),
   ],

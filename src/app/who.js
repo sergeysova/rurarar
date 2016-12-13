@@ -21,6 +21,11 @@ export default class Who extends Component {
         Hello World {this.state.value} <br/>
         <button onClick={this.onChange()}>Change</button>
         <i>Examples?</i>
+        <br/><br/>
+        {__PRODUCTION__
+          && <div>Production mode</div>}
+        {__DEVELOPMENT__
+          && <div>Development mode</div>}
       </div>
     )
   }

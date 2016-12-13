@@ -1,4 +1,8 @@
-const { HotModuleReplacementPlugin, optimize: { OccurrenceOrderPlugin, DedupePlugin, UglifyJsPlugin } } = require('webpack')
+const {
+  HotModuleReplacementPlugin,
+  DefinePlugin,
+  optimize: { OccurrenceOrderPlugin, DedupePlugin, UglifyJsPlugin },
+} = require('webpack')
 const config = require('./base.config')
 const { loaders } = require('./loaders')
 
@@ -19,6 +23,13 @@ module.exports = {
     loaders,
   },
   plugins: [
+    new DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify('production'),
+      },
+      __PRODUCTION__: true,
+      __DEVELOPMENT__: false,
+    }),
     new DedupePlugin(),
     new OccurrenceOrderPlugin(true),
     new UglifyJsPlugin({ compress: { warnings: false } }),

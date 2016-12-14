@@ -1,3 +1,4 @@
+const { resolve } = require('path')
 const {
   HotModuleReplacementPlugin,
   DefinePlugin,
@@ -21,6 +22,9 @@ module.exports = {
   },
   module: {
     loaders,
+  },
+  resolve: {
+    root: resolve(__dirname, '..', 'src'),
   },
   plugins: [
     new DefinePlugin({

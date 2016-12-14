@@ -10,6 +10,9 @@ export default class App extends Component {
       <div style={{ padding: '20px', textAlign: 'center', width: '100%' }}>
         <Who />
         <Demo />
+        <br/><br/>
+        {this.props.children}
+        <div>foot</div>
       </div>
     )
   }

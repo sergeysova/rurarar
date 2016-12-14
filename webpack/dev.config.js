@@ -1,3 +1,4 @@
+import { resolve } from 'path'
 import { HotModuleReplacementPlugin, optimize, DefinePlugin } from 'webpack'
 const { OccurrenceOrderPlugin } = optimize
 import config from './base.config'
@@ -22,6 +23,9 @@ export default {
   },
   module: {
     loaders,
+  },
+  resolve: {
+    root: resolve(__dirname, '..', 'src'),
   },
   plugins: [
     new DefinePlugin({

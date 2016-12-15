@@ -7,7 +7,7 @@ import { Provider } from 'react-redux'
 import createStore from './store/create'
 
 const target = document.getElementById('wbpp')
-const store = createStore({})
+const store = createStore(window.INITIAL_STATE || {})
 
 function render() {
   const { pathname, search, hash } = window.location

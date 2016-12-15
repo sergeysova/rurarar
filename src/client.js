@@ -3,8 +3,11 @@ import 'babel-polyfill'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Router, match, browserHistory } from 'react-router'
+import { Provider } from 'react-redux'
+import createStore from './store/create'
 
 const target = document.getElementById('wbpp')
+const store = createStore({})
 
 function render() {
   const { pathname, search, hash } = window.location
@@ -21,7 +24,9 @@ function render() {
     }
 
     ReactDOM.render(
-      <Router routes={routes} history={browserHistory} />,
+      <Provider store={store}>
+        <Router routes={routes} history={browserHistory} />
+      </Provider>,
     target)
   })
 }

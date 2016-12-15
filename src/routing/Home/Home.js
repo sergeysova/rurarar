@@ -2,22 +2,20 @@ import React from 'react'
 import { Link } from 'react-router'
 import { connect } from 'react-redux'
 import { compose, lifecycle } from 'recompose'
+import { provideHooks } from 'redial'
 
 import * as actions from 'store/home/home'
 
+const redial = {
+  fetch: ({ dispatch }) => Promise.all([
+    dispatch(actions.setNumber(Math.floor(Math.random() * 90) / 10)),
+    dispatch(actions.showNumber()),
+  ]),
+}
 
 const enhance = compose(
   connect(({ home }) => ({ home }), actions),
-  lifecycle({
-    componentWillMount() {
-      this.props.setNumber(Math.floor(Math.random() * 90) / 10)
-      this.props.showNumber()
-      console.log('will', this.props.home)
-    },
-    componentDidMount() {
-      console.log('did')
-    },
-  }),
+  provideHooks(redial),
 )
 
 const Home = ({ home: { number, show } }) => (

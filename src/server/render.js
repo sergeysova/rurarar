@@ -2,6 +2,7 @@ import React from 'react'
 import { renderToString } from 'react-dom/server'
 import { Provider } from 'react-redux'
 import { match, RouterContext } from 'react-router'
+import { trigger } from 'redial'
 import routing from '../routing'
 import createStore from '../store/create'
 
@@ -17,14 +18,26 @@ export default function handleRender(req, res) {
       res.redirect(302, redirectLocation.pathname + redirectLocation.search)
     }
     else if (renderProps) {
-      const result = renderToString(
-        <Provider store={store}>
-          <RouterContext {...renderProps} />
-        </Provider>
-      )
-      const state = store.getState()
+      const locals = {
+        path: renderProps.location.pathname,
+        query: renderProps.location.query,
+        params: renderProps.params,
 
-      res.status(200).send(renderPage(result, state))
+        dispatch: store.dispatch,
+      }
+
+      trigger('fetch', renderProps.components, locals)
+        .then(() => {
+          const state = store.getState()
+          const result = renderToString(
+            <Provider store={store}>
+              <RouterContext {...renderProps} />
+            </Provider>
+          )
+
+          res.status(200).send(renderPage(result, state))
+        })
+        .catch(err => res.status(500).send(error.message))
     }
     else {
       res.status(404).send('File Not Found')

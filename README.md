@@ -11,7 +11,7 @@ React Universal Recomposed Application with Redux And Redial
 - [Redial](https://github.com/markdalgleish/redial)
 - [Recompose](https://github.com/acdlite/recompose)
 - [Server Side Rendering](src/server/render.js)
-- Dependencies lock with [npm-shrinkwrap](npm-shrinkwrap.json)
+- Dependencies lock with [npm-shrinkwrap](npm-shrinkwrap.json) and [yarn.lock](yarn.lock)
 
 
 ## Requirements

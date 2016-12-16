@@ -1,16 +1,17 @@
-import Application from 'app/index'
+import React from 'react'
+import { Route, IndexRoute } from 'react-router'
+
+import Application from 'app/components/Application'
+import NotFoundRoute from 'app/components/NotFoundRoute'
+import { Root, About } from 'app/screens'
 
 export default function createRouting() {
-  return {
-    path: '/',
-    component: Application,
-    indexRoute: require('./Home').default,
-    getChildRoutes(location, cb) {
-      const components = [
-        require('./Base').default,
-      ]
+  return (
+    <Route path="/" component={Application}>
+      <IndexRoute component={Root} />
+      <Route path="/about" component={About} />
 
-      cb(null, components)
-    },
-  }
+      <Route path="*" component={NotFoundRoute} />
+    </Route>
+  )
 }

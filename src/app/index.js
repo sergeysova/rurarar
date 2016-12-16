@@ -1,19 +1,38 @@
-import React, { Component } from 'react'
+import React, { PropTypes } from 'react'
+import { compose } from 'recompose'
+import { useSheet } from 'styles/jss'
 
 import Who from './who'
 import Demo from './components/demo'
 
-
-export default class App extends Component {
-  render() {
-    return (
-      <div style={{ padding: '20px', textAlign: 'center', width: '100%' }}>
-        <Who />
-        <Demo />
-        <br/><br/>
-        {this.props.children}
-        <div>foot</div>
-      </div>
-    )
-  }
+const styles = {
+  app: {
+    padding: 20,
+    textAlign: 'center',
+    width: '100%',
+  },
 }
+
+const enhance = compose(
+  useSheet(styles),
+)
+
+
+const App = ({ children, sheet: { classes } }) => (
+  <div className={classes.app}>
+    <Who />
+    <Demo />
+    <br /><br />
+    {children}
+    <div>foot</div>
+  </div>
+)
+
+App.propTypes = {
+  sheet: PropTypes.object,
+
+  children: PropTypes.node,
+}
+
+export default enhance(App)
+

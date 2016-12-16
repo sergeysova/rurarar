@@ -1,0 +1,58 @@
+{
+  "extends": "airbnb",
+  "plugins": ["react", "import"],
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 7,
+    "ecmaFeatures": {
+      "jsx": true,
+      "experimentalObjectRestSpread": true
+    },
+    "sourceType": "module"
+  },
+  "rules": {
+    "quotes": [0, "single", { "avoidEscape": true }],
+    "semi": [2, "never"],
+    "no-unused-vars": ["error", { "vars": "all", "args": "after-used", "varsIgnorePattern": "PropTypes" }],
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": 2,
+    "react/react-in-jsx-scope": 2,
+    "react/jsx-filename-extension": [1, { "extensions": [".js"] }],
+    "react/jsx-first-prop-new-line": [1, "multiline"],
+    "jsx-quotes": [2, "prefer-double"],
+    "import/no-unresolved": 0,
+    "global-require": 0,
+    "quote-props": [2, "as-needed"],
+    "max-len": [1, 120],
+    "no-unused-expressions": [2, { "allowShortCircuit": true, "allowTernary": true }],
+    "no-confusing-arrow": 0,
+    "no-use-before-define": [2, { "functions": true }],
+    "no-param-reassign": ["error", { "props": false }],
+    "consistent-return": "error",
+    "import/no-extraneous-dependencies": 0,
+    "import/prefer-default-export": 0,
+    "no-restricted-syntax": ["error", "WithStatement"],
+    "no-continue": 0,
+    "arrow-parens": [2, "as-needed"],
+    "generator-star-spacing": ["error", { "after": true, "before": false }],
+    "react/jsx-no-duplicate-props": ["error"],
+    "react/jsx-no-bind": ["error", { "ignoreRefs": true }],
+    "react/jsx-space-before-closing": [1, "always"],
+    "no-multiple-empty-lines": [1, { "max": 2 }],
+    "no-mixed-operators": 0,
+    "import/extensions": ["error", { "js": "never", "json": "always" }],
+    "class-methods-use-this": 0,
+    "react/forbid-prop-types": 0,
+    "brace-style": ["error", "stroustrup", { "allowSingleLine": true }]
+  },
+  "parser": "babel-eslint",
+  "settings": {
+    "import/resolve": {
+      "moduleDirectory": ["node_modules", "src"]
+    }
+  }
+}

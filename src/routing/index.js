@@ -1,7 +1,6 @@
 import Application from 'app/index'
 
 export default function createRouting() {
-
   return {
     path: '/',
     component: Application,

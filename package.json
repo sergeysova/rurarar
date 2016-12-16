@@ -11,7 +11,8 @@
     "start": "NODE_ENV=production npm run run",
     "run": "node -r ./bin/hooks ./bin/start",
     "dev": "DEBUG=APP:* DEBUG_COLORS=1 NODE_ENV=development nodemon -x \"npm run run\" --ignore ./",
-    "build": "NODE_ENV=production webpack --config webpack/prod.config.js"
+    "build": "NODE_ENV=production webpack --config webpack/prod.config.js",
+    "lint": "eslint src"
   },
   "author": "Sergey Sova <i.am@lestad.net> (https://lestad.top)",
   "license": "MIT",
@@ -38,11 +39,17 @@
     "redux": "^3.6.0"
   },
   "devDependencies": {
+    "babel-eslint": "^7.1.1",
     "babel-loader": "^6.2.5",
     "babel-polyfill": "^6.16.0",
     "babel-preset-react-hmre": "^1.1.1",
     "chokidar": "^1.6.1",
     "debug": "^2.2.0",
+    "eslint": "^3.12.2",
+    "eslint-config-airbnb": "^13.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^2.2.3",
+    "eslint-plugin-react": "^6.8.0",
     "nodemon": "^1.11.0",
     "webpack": "^1.13.2",
     "webpack-dev-middleware": "^1.8.4",

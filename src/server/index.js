@@ -10,6 +10,16 @@ const app = Express()
 
 app.use(morgan('combined'))
 
+function clearDependencies(regexp) {
+  return Object.keys(require.cache)
+    .filter(e => !((/node_modules/g).test(e)))
+    .filter(id => regexp.test(id))
+    .map(id => {
+      delete require.cache[id]
+      return id
+    })
+}
+
 // DEVELOPMENT MODE
 if (global.NODE_ENV === 'development') {
   LOG('Enabled development mode.')
@@ -37,26 +47,16 @@ if (global.NODE_ENV === 'development') {
   app.use(middleware)
   app.use(webpackHotMiddleware(compiler))
 
-  function clearDependencies(regexp) {
-    return Object.keys(require.cache)
-      .filter(e => !((/node_modules/g).test(e)))
-      .filter(id => regexp.test(id))
-      .map(id => {
-        delete require.cache[id]
-        return id
-      })
-  }
-
   watcher.on('ready', () => {
     watcher.on('all', (e, path) => {
       LOG('Clearing module cache', e, path)
-      LOG('Cleared:', clearDependencies(/[\/\\]src[\/\\]/))
+      LOG('Cleared:', clearDependencies(/[/\\]src[/\\]/))
     })
   })
 
   compiler.plugin('done', () => {
     LOG('Clearing react module cache')
-    LOG('Cleared:', clearDependencies(/[\/\\]src[\/\\]/))
+    LOG('Cleared:', clearDependencies(/[/\\]src[/\\]/))
   })
 
   delete require.cache[require.resolve('server/render')]
@@ -68,6 +68,6 @@ app.get('*', (req, res) => require('server/render').default(req, res))
 
 app.listen(config.port, err =>
   err
-    ? console.error('ERROR', err)
-    : console.log(`Listen ${config.port} port...`)
+    ? LOG('ERROR', err)
+    : LOG(`Listen ${config.port} port...`),
 )

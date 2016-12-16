@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import { Link } from 'react-router'
 import { connect } from 'react-redux'
-import { compose, lifecycle } from 'recompose'
+import { compose } from 'recompose'
 import { provideHooks } from 'redial'
 import { useSheet } from 'styles/jss'
 
@@ -30,17 +30,6 @@ const enhance = compose(
   useSheet(styles),
   connect(({ home }) => ({ home }), actions),
   provideHooks(redial),
-  lifecycle({
-    componentWillMount() {
-      console.log('will', this.props.home)
-    },
-    componentDidMount() {
-      console.log('did')
-    },
-    componentWillReceiveProps() {
-      console.log('update')
-    },
-  }),
 )
 
 const Home = ({ home: { number, show }, sheet: { classes } }) => (
@@ -50,5 +39,10 @@ const Home = ({ home: { number, show }, sheet: { classes } }) => (
     {show && <div>Number: {number}</div>}
   </div>
 )
+
+Home.propTypes = {
+  home: PropTypes.object,
+  sheet: PropTypes.object,
+}
 
 export default enhance(Home)

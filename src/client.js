@@ -13,13 +13,12 @@ const store = createStore(window.INITIAL_STATE || {})
 
 function render() {
   const { pathname, search, hash } = window.location
-  const location = `${pathname}${search}${hash}`
 
   const createRouting = require('./routing').default
   const routes = createRouting()
   baseStyleSheet().attach()
 
-  match({ routes, location }, () => {
+  match({ routes, location: `${pathname}${search}${hash}` }, () => {
     ReactDOM.render(
       <Provider store={store}>
         <Router routes={routes} history={browserHistory} key={Math.random()} />
@@ -28,14 +27,13 @@ function render() {
       () => {
         const JssStyles = document.getElementById('ssrs')
         JssStyles && JssStyles.parentNode.removeChild(JssStyles)
-      }
+      },
     )
   })
 
   return browserHistory.listen(location => {
     match({ routes, location }, (error, redirectLocation, renderProps) => {
-      if (error)
-        console.error(error)
+      if (error) { console.error(error) } // eslint-disable-line no-console
 
       const { components } = renderProps
 
@@ -47,10 +45,12 @@ function render() {
         dispatch: store.dispatch,
       }
 
-      if (window.INITIAL_STATE)
+      if (window.INITIAL_STATE) {
         delete window.INITIAL_STATE
-      else
+      }
+      else {
         trigger('fetch', components, getLocals)
+      }
 
       trigger('defer', components, getLocals)
     })
@@ -68,6 +68,4 @@ if (target) {
       }, 1)
     })
   }
-
-
 }

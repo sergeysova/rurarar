@@ -4,12 +4,12 @@ export const createTypes = (actions, namespace = 'default') =>
 
 export const createActions = (actions, namespace = 'default') =>
   actions.reduce((hash, actionName) => {
-      const action = (payload, meta = {}) =>
+    const action = (payload, meta = {}) =>
         ({ type: `${namespace}/${actionName}`, payload, meta })
-      action.type = `${namespace}/${actionName}`
+    action.type = `${namespace}/${actionName}`
 
-      return ({ ...hash, [actionName]: action })
-    },
+    return ({ ...hash, [actionName]: action })
+  },
   {})
 
 export const createReducer = (initialState, reducers) =>
@@ -17,7 +17,7 @@ export const createReducer = (initialState, reducers) =>
     const handler = reducers[type]
 
     if (handler) {
-      state = handler(state, payload, meta)
+      state = handler(state, payload, meta) // eslint-disable-line no-param-reassign
     }
 
     return state

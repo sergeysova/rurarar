@@ -1,32 +1,14 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-const random = () => Math.floor(Math.random() * 50) / 10
+/* global __PRODUCTION__ __DEVELOPMENT__ */
 
-
-export default class Who extends Component {
-  state = { value: 0 }
-  onChange = this.onChange.bind(this)
-
-  componentDidMount() {
-    this.onChange()()
-  }
-
-  onChange() {
-    return event => this.setState({ value: random() })
-  }
-
-  render() {
-    return (
-      <div>
-        Hello World {this.state.value} <br/>
-        <button onClick={this.onChange()}>Change</button>
-        <i>Examples?</i>
-        <br/><br/>
-        {__PRODUCTION__
-          && <div>Production mode</div>}
-        {__DEVELOPMENT__
-          && <div>Development mode</div>}
-      </div>
-    )
-  }
-}
+export default () => (
+  <div>
+    <i>Examples?</i>
+    <br /><br />
+    {__PRODUCTION__
+    && <div>Production mode</div>}
+    {__DEVELOPMENT__
+    && <div>Development mode</div>}
+  </div>
+)

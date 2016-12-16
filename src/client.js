@@ -12,11 +12,25 @@ const store = createStore(window.INITIAL_STATE || {})
 
 function render() {
   const { pathname, search, hash } = window.location
+  const location = `${pathname}${search}${hash}`
+
   const createRouting = require('./routing').default
   const routes = createRouting()
 
-  browserHistory.listen(location => {
+  match({ routes, location }, () => {
+    ReactDOM.render(
+      <Provider store={store}>
+        <Router routes={routes} history={browserHistory} key={Math.random()} />
+      </Provider>,
+      target
+    )
+  })
+
+  return browserHistory.listen(location => {
     match({ routes, location }, (error, redirectLocation, renderProps) => {
+      if (error)
+        console.error(error)
+
       const { components } = renderProps
 
       const getLocals = {
@@ -35,21 +49,19 @@ function render() {
       trigger('defer', components, getLocals)
     })
   })
-
-  ReactDOM.render(
-    <Provider store={store}>
-      <Router routes={routes} history={browserHistory} />
-    </Provider>,
-    target)
 }
 
 if (target) {
+  let unusubscribeHistory = render()
 
   if (module.hot) {
     module.hot.accept('./routing/index', () => {
-      setTimeout(() => render(), 1)
+      unusubscribeHistory && unusubscribeHistory()
+      setTimeout(() => {
+        unusubscribeHistory = render()
+      }, 1)
     })
   }
 
-  render()
+
 }

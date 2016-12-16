@@ -16,6 +16,17 @@ const redial = {
 const enhance = compose(
   connect(({ home }) => ({ home }), actions),
   provideHooks(redial),
+  lifecycle({
+    componentWillMount() {
+      console.log('will', this.props.home)
+    },
+    componentDidMount() {
+      console.log('did')
+    },
+    componentWillReceiveProps() {
+      console.log('update')
+    },
+  }),
 )
 
 const Home = ({ home: { number, show } }) => (

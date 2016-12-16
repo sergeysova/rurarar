@@ -5,6 +5,8 @@ import morgan from 'morgan'
 
 import config from '../../webpack/dev.config'
 
+/* global __DEVELOPMENT__ */
+
 const LOG = debug('APP:SERVER')
 const app = Express()
 
@@ -20,8 +22,7 @@ function clearDependencies(regexp) {
     })
 }
 
-// DEVELOPMENT MODE
-if (global.NODE_ENV === 'development') {
+if (__DEVELOPMENT__) {
   LOG('Enabled development mode.')
 
   const webpack = require('webpack')
@@ -60,8 +61,8 @@ if (global.NODE_ENV === 'development') {
   })
 
   delete require.cache[require.resolve('server/render')]
-}
-// \DEVELOPMENT MODE
+} // if (__DEVELOPMENT__)
+
 
 app.use('/dist', Express.static('dist'))
 app.get('*', (req, res) => require('server/render').default(req, res))

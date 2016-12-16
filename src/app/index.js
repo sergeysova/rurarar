@@ -10,6 +10,7 @@ const styles = {
     padding: 20,
     textAlign: 'center',
     width: '100%',
+    boxSizing: 'border-box',
   },
 }
 

@@ -3,8 +3,21 @@ import { Link } from 'react-router'
 import { connect } from 'react-redux'
 import { compose, lifecycle } from 'recompose'
 import { provideHooks } from 'redial'
+import { useSheet } from 'styles/jss'
 
 import * as actions from 'store/home/home'
+
+const styles = {
+  home: {
+    display: 'flex',
+    flexFlow: 'column',
+  },
+  header: {
+    fontSize: 24,
+    marginTop: 10,
+    marginBottom: 10,
+  },
+}
 
 const redial = {
   fetch: ({ dispatch }) => Promise.all([
@@ -14,6 +27,7 @@ const redial = {
 }
 
 const enhance = compose(
+  useSheet(styles),
   connect(({ home }) => ({ home }), actions),
   provideHooks(redial),
   lifecycle({
@@ -29,9 +43,9 @@ const enhance = compose(
   }),
 )
 
-const Home = ({ home: { number, show } }) => (
-  <div>
-    <h4>Home page</h4>
+const Home = ({ home: { number, show }, sheet: { classes } }) => (
+  <div className={classes.home}>
+    <h4 className={classes.header}>Home page</h4>
     <Link to="/base">To base</Link>
     {show && <div>Number: {number}</div>}
   </div>

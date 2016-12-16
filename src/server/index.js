@@ -1,11 +1,14 @@
 import Express from 'express'
 import debug from 'debug'
 import { watch } from 'chokidar'
+import morgan from 'morgan'
 
 import config from '../../webpack/dev.config'
 
 const LOG = debug('APP:SERVER')
 const app = Express()
+
+app.use(morgan('combined'))
 
 // DEVELOPMENT MODE
 if (global.NODE_ENV === 'development') {

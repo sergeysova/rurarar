@@ -34,6 +34,8 @@ export default {
       },
       __PRODUCTION__: false,
       __DEVELOPMENT__: true,
+      __CLIENT__: true,
+      __SERVER__: false,
     }),
     new OccurrenceOrderPlugin(true),
     new HotModuleReplacementPlugin(),

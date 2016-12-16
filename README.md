@@ -11,6 +11,8 @@ React Universal Recomposed Application with Redux And Redial
 - [Redial](https://github.com/markdalgleish/redial)
 - [Recompose](https://github.com/acdlite/recompose)
 - [Server Side Rendering](src/server/render.js)
+- Styles: [JSS](https://github.com/cssinjs/jss) with [ReactJSS](https://github.com/cssinjs/react-jss) ([preset default](https://github.com/cssinjs/jss-preset-default))
+- Also: [normalize](src/styles/normalize.js) and [Google Material Colors](https://github.com/danlevan/google-material-color)
 - Dependencies lock with [npm-shrinkwrap](npm-shrinkwrap.json) and [yarn.lock](yarn.lock)
 
 

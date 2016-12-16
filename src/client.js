@@ -6,6 +6,7 @@ import { Router, match, browserHistory } from 'react-router'
 import { Provider } from 'react-redux'
 import { trigger } from 'redial'
 import createStore from './store/create'
+import baseStyleSheet from './styles'
 
 const target = document.getElementById('wbpp')
 const store = createStore(window.INITIAL_STATE || {})
@@ -16,13 +17,18 @@ function render() {
 
   const createRouting = require('./routing').default
   const routes = createRouting()
+  baseStyleSheet().attach()
 
   match({ routes, location }, () => {
     ReactDOM.render(
       <Provider store={store}>
         <Router routes={routes} history={browserHistory} key={Math.random()} />
       </Provider>,
-      target
+      target,
+      () => {
+        const JssStyles = document.getElementById('ssrs')
+        JssStyles && JssStyles.parentNode.removeChild(JssStyles)
+      }
     )
   })
 

@@ -1,16 +1,15 @@
 import React, { PropTypes } from 'react'
 import { compose } from 'recompose'
+import { Layout } from 'app/components/Layout'
 import { useSheet } from 'styles/jss'
 
 
 const styles = {
   notFound: {
-    display: 'flex',
     justifyContent: 'center',
     fontSize: 32,
-    padding: '20px 0',
+    alignItems: 'center',
   },
-
 }
 
 const enhance = compose(
@@ -18,9 +17,9 @@ const enhance = compose(
 )
 
 const NotFoundRoute = ({ sheet: { classes } }) => (
-  <div className={classes.notFound}>
+  <Layout className={classes.notFound} padding="L">
     Page not found!
-  </div>
+  </Layout>
 )
 
 NotFoundRoute.propTypes = {

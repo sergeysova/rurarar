@@ -1,9 +1,8 @@
 import React, { PropTypes } from 'react'
 import { compose } from 'recompose'
 import { connect } from 'react-redux'
-import { provideHooks } from 'redial'
 import { useSheet } from 'styles/jss'
-import { getColor, getText } from 'styles/palette'
+import { getColor } from 'styles/palette'
 
 import Header from './Header'
 
@@ -18,10 +17,16 @@ const styles = {
     flexDirection: 'column',
     minHeight: '84vh',
     background: 'white',
+    alignItems: 'center',
+  },
+  contentContainer: {
+    display: 'flex',
+    minWidth: '800px', // TODO: hardcode
+    flexFlow: 'column nowrap',
   },
   footer: {
     display: 'flex',
-    flexFlow: 'row nowrap',
+    flexFlow: 'column nowrap',
     justifyContent: 'center',
     background: getColor('Light Blue'),
     lineHeight: '80px',
@@ -29,30 +34,19 @@ const styles = {
   },
 }
 
-/* eslint-disable no-console */
-const redial = {
-  fetch: () => Promise.all([
-    new Promise(resolve => {
-      console.log('start loading')
-      setTimeout(() => {
-        // Simulate preloading data
-        resolve()
-      }, 80)
-    }).then(() => console.log('finish loading')),
-  ]),
-}
-/* eslint-enable no-console */
-
 const enhance = compose(
   connect(),
   useSheet(styles),
-  provideHooks(redial),
 )
 
 const Home = ({ children, sheet: { classes } }) => (
   <div className={classes.application}>
     <Header />
-    <section className={classes.content}>{children}</section>
+    <section className={classes.content}>
+      <div className={classes.contentContainer}>
+        {children}
+      </div>
+    </section>
     <footer className={classes.footer}>RuRaRaR</footer>
   </div>
 )

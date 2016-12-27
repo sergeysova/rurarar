@@ -7,8 +7,9 @@ import { getColor, getShadow } from 'styles/palette'
 const styles = {
   header: {
     display: 'flex',
-    flexFlow: 'row nowrap',
+    flexFlow: 'column nowrap',
     justifyContent: 'center',
+    alignItems: 'center',
     background: getColor('Light Blue'),
     lineHeight: '64px',
     height: '64px',
@@ -19,6 +20,7 @@ const styles = {
     boxShadow: getShadow('appBar'),
     userSelect: 'none',
     cursor: 'default',
+    zIndex: 10,
   },
   homeLink: {
     display: 'flex',

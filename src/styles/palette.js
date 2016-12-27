@@ -5,7 +5,7 @@ export function getColor(color, shade = 500) {
 }
 
 const shadowLevels = {
-  appBar: '0 2px 5px rgba(0,0,0,.26)',
+  appBar: '0 0 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28)',
 }
 
 export function getShadow(name) {

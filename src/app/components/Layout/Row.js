@@ -1,15 +1,15 @@
 import React, { PropTypes } from 'react'
 import cn from 'classnames'
 import { compose, mapProps } from 'recompose'
+import stylesClasses from 'styles'
 import { useSheet } from 'styles/jss'
-import { marginBetween, Types, selectClasses } from 'styles/mixins'
+import { Types, selectClasses } from 'styles/mixins'
 
 const styles = {
   column: {
     display: 'flex',
     flexDirection: 'column',
   },
-  ...marginBetween,
 }
 
 const enhance = compose(
@@ -18,13 +18,14 @@ const enhance = compose(
     ...props,
     classes: {
       ...classes,
-      additional: selectClasses(props, classes, ['marginBetween']),
+      additional: selectClasses(props, stylesClasses.classes, ['marginBetween']),
     },
+    tag: props.tag || 'div',
   })),
 )
 
-const Row = ({ children, classes, className }) => (
-  <div className={cn(classes.column, classes.additional, className)}>{children}</div>
+const Row = ({ children, classes, className, tag: Tag }) => (
+  <Tag className={cn(classes.column, classes.additional, className)}>{children}</Tag>
 )
 
 Row.propTypes = {
@@ -33,6 +34,7 @@ Row.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   marginBetween: Types.marginBetween,
+  tag: PropTypes.string,
 }
 
 export default enhance(Row)

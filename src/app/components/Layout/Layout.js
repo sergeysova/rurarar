@@ -1,16 +1,14 @@
 import React, { PropTypes } from 'react'
 import cn from 'classnames'
 import { compose, mapProps } from 'recompose'
+import stylesClasses from 'styles'
 import { useSheet } from 'styles/jss'
-import { Types, padding, justifyContent, marginBetween, selectClasses } from 'styles/mixins'
+import { Types, selectClasses } from 'styles/mixins'
 
 const styles = {
   column: {
     display: 'flex',
   },
-  ...padding,
-  ...justifyContent,
-  ...marginBetween,
 }
 
 const enhance = compose(
@@ -19,7 +17,7 @@ const enhance = compose(
     ...props,
     classes: {
       ...classes,
-      additional: selectClasses(props, classes, ['padding', 'justifyContent', 'marginBetween']),
+      additional: selectClasses(props, stylesClasses.classes, ['padding', 'justifyContent', 'alignItems']),
     },
   })),
 )
@@ -33,7 +31,8 @@ Layout.propTypes = {
 
   children: PropTypes.node,
   className: PropTypes.string,
-  ...Types,
+  padding: Types.padding,
+  justifyContent: Types.justifyContent,
 }
 
 export default enhance(Layout)

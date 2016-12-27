@@ -18,7 +18,7 @@ function renderPage(html, state, styles) {
       <head>
         <title>Example app</title>
         <link href="https://fonts.googleapis.com/css?family=Roboto:300,400|Titillium+Web" rel="stylesheet" />
-        <style type="text/css" data-jss="" data-meta="base-styles">${baseStyles().toString()}</style>
+        <style type="text/css" data-jss="" data-meta="base-styles">${baseStyles.toString()}</style>
         <style type="text/css" id="ssrs">${styles}</style>
       </head>
       <body>
@@ -79,4 +79,3 @@ export default function handleRender(req, res) {
     }
   })
 }
-

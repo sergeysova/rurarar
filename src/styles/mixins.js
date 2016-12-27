@@ -1,19 +1,39 @@
 import { PropTypes } from 'react'
 
 export const justifyContent = {
-  justifyContent_flexStart: { justifyContent: 'flex-start' },
-  justifyContent_flexEnd: { justifyContent: 'flex-end' },
-  justifyContent_center: { justifyContent: 'center' },
+
+}
+
+export const alignItems = {
+
 }
 
 export const marginBetween = {
+
+}
+
+export const padding = {
+
+}
+
+export const styles = {
+  justifyContent_flexStart: { justifyContent: 'flex-start' },
+  justifyContent_flexEnd: { justifyContent: 'flex-end' },
+  justifyContent_center: { justifyContent: 'center' },
+  justifyContent_spaceAround: { justifyContent: 'space-around' },
+  justifyContent_spaceBetween: { justifyContent: 'space-between' },
+
+  alignItems_flexStart: { alignItems: 'flex-start' },
+  alignItems_flexEnd: { alignItems: 'flex-end' },
+  alignItems_center: { alignItems: 'center' },
+  alignItems_baseline: { alignItems: 'baseline' },
+  alignItems_stretch: { alignItems: 'stretch' },
+
   marginBetween_XS: { '& > * + *': { marginLeft: '4px' } },
   marginBetween_S: { '& > * + *': { marginLeft: '8px' } },
   marginBetween_M: { '& > * + *': { marginLeft: '14px' } },
   marginBetween_L: { '& > * + *': { marginLeft: '24px' } },
-}
 
-export const padding = {
   padding_XS: { padding: '4px' },
   padding_S: { padding: '8px' },
   padding_M: { padding: '14px' },
@@ -21,7 +41,8 @@ export const padding = {
 }
 
 export const Types = {
-  justifyContent: PropTypes.oneOf(['flexStart', 'flexEnd', 'center']),
+  justifyContent: PropTypes.oneOf(['flexStart', 'flexEnd', 'center', 'spaceAround', 'spaceBetween']),
+  alignItems: PropTypes.oneOf(['flexStart', 'flexEnd', 'center', 'baseline', 'stretch']),
   marginBetween: PropTypes.oneOf(['XS', 'S', 'M', 'L']),
   padding: PropTypes.oneOf(['XS', 'S', 'M', 'L']),
 }

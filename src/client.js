@@ -16,7 +16,7 @@ function render() {
 
   const createRouting = require('./routing').default
   const routes = createRouting()
-  baseStyleSheet().attach()
+  baseStyleSheet.attach()
 
   match({ routes, location: `${pathname}${search}${hash}` }, () => {
     ReactDOM.render(

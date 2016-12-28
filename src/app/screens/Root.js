@@ -1,16 +1,20 @@
 import React, { PropTypes } from 'react'
 import { compose } from 'recompose'
-import { connect } from 'react-redux'
-import { Layout } from 'app/components/Layout'
+// import { connect } from 'react-redux'
+import { Link } from 'react-router'
+import { Layout, Column } from 'app/components/Layout'
 
 
 const enhance = compose(
-  connect(),
+  // connect(),
 )
 
 const Index = () => (
   <Layout padding="L" justifyContent="center">
-    Index file
+    <Column marginBetween="M">
+      <div>Index file</div>
+      <Link to="/about">To about</Link>
+    </Column>
   </Layout>
 )
 

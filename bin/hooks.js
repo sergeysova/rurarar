@@ -11,6 +11,7 @@ global.__DEVELOPMENT__ = NODE_ENV === 'development'
 global.__CLIENT__ = false
 global.__SERVER__ = true
 
+require('babel-polyfill')
 require('babel-register')({
   ignore: /node_modules/,
 })

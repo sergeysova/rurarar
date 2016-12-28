@@ -23,16 +23,15 @@ const enhance = compose(
     ...props,
     classes: {
       ...classes,
-      additional: selectClasses(props, stylesClasses.classes, allMixins, [
-        marginBetween && classes[`marginBetween_${marginBetween}`],
-      ]),
+      additional: selectClasses(props, stylesClasses.classes, allMixins),
+      margin: marginBetween && classes[`marginBetween_${marginBetween}`],
     },
     tag: tag || 'div',
   })),
 )
 
 const Column = ({ children, classes, className, tag: Tag }) => (
-  <Tag className={cn(classes.column, classes.additional, className)}>{children}</Tag>
+  <Tag className={cn(classes.column, classes.additional, classes.margin, className)}>{children}</Tag>
 )
 
 Column.propTypes = {

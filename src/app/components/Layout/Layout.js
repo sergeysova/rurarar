@@ -6,7 +6,7 @@ import { useSheet } from 'styles/jss'
 import { Types, selectClasses } from 'styles/mixins'
 
 const styles = {
-  column: {
+  layout: {
     display: 'flex',
   },
 }
@@ -23,7 +23,7 @@ const enhance = compose(
 )
 
 const Layout = ({ children, classes, className }) => (
-  <div className={cn(classes.column, classes.additional, className)}>{children}</div>
+  <div className={cn(classes.layout, classes.additional, className)}>{children}</div>
 )
 
 Layout.propTypes = {

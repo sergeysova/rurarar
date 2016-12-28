@@ -3,7 +3,6 @@ import { compose } from 'recompose'
 // import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import { Layout, Column } from 'app/components/Layout'
-import { Button } from 'app/components/Button'
 
 
 const enhance = compose(
@@ -15,7 +14,7 @@ const Index = () => (
     <Column marginBetween="M">
       <div>Index file</div>
       <Link to="/about">To about</Link>
-      <Button>Example button</Button>
+      <Link to="/github">Github API Usage</Link>
     </Column>
   </Layout>
 )

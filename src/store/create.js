@@ -1,21 +1,26 @@
 import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
+import Github from 'app/data/github'
 import reducers from './reducers'
 
 /* eslint-disable no-underscore-dangle */
 /* global __DEVELOPMENT__ */
 
-const middlewares = [
-  thunk,
-]
+export default initialState => {
+  const github = new Github()
 
-const composeWithDevTools = __DEVELOPMENT__ && typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-  ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-  : compose
+  const middlewares = [
+    thunk.withExtraArgument({ github }),
+  ]
 
-export default initialState =>
-  createStore(
+  const composeWithDevTools = __DEVELOPMENT__
+    && typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+      ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+      : compose
+
+  return createStore(
     reducers,
     initialState,
     composeWithDevTools(applyMiddleware(...middlewares)),
   )
+}

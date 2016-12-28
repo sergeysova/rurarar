@@ -26,7 +26,7 @@ const styles = {
     },
     '&:focus': {
       outline: 'rgba(0,0,0,.8) auto 3px',
-    }
+    },
   },
 }
 

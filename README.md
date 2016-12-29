@@ -23,12 +23,13 @@ React Universal Recomposed Application with Redux And Redial
 
 ## Installing
 
-## Development
-
 ```bash
 git clone https://github.com/LestaD/rurarar.git projectname
 cd projectname
-npm install --ignore-shrinkwrap # To install dev dependencies
+npm install
+
+# for production after build bundle.js:
+npm install --production
 ```
 
 ## Scripts

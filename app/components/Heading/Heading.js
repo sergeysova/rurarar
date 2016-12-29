@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import cn from 'classnames'
 import { useSheet } from 'styles/jss'
-import { getText } from 'styles/palette'
+
 
 const styles = {
   heading: {

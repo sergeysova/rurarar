@@ -2,11 +2,12 @@ import React, { PropTypes } from 'react'
 import { compose, withHandlers } from 'recompose'
 import { connect } from 'react-redux'
 import { provideHooks } from 'redial'
-import { Layout, Column, Row } from 'app/components/Layout'
-import { Heading } from 'app/components/Heading'
-import { Button } from 'app/components/Button'
-import { Input } from 'app/components/Input'
-import Repo from 'app/components/Github/Repo'
+
+import { Layout, Column, Row } from 'components/Layout'
+import { Heading } from 'components/Heading'
+import { Button } from 'components/Button'
+import { Input } from 'components/Input'
+import Repo from 'components/Github/Repo'
 import * as actions from 'store/github/github'
 
 const redial = {

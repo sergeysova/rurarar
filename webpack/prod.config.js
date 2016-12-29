@@ -1,9 +1,9 @@
 const { resolve } = require('path')
 const {
-  HotModuleReplacementPlugin,
   DefinePlugin,
   optimize: { OccurrenceOrderPlugin, DedupePlugin, UglifyJsPlugin },
 } = require('webpack')
+
 const config = require('./base.config')
 const { loaders } = require('./loaders')
 
@@ -16,7 +16,7 @@ module.exports = {
     ],
   },
   output: {
-    path: config.outputPath + '/',
+    path: `${config.outputPath}/`,
     filename: 'bundle.js',
     publicPath: '/dist/',
   },
@@ -24,12 +24,12 @@ module.exports = {
     loaders,
   },
   resolve: {
-    root: resolve(__dirname, '..', 'src'),
+    root: resolve(__dirname, '..', 'app'),
   },
   plugins: [
     new DefinePlugin({
       'process.env': {
-        'NODE_ENV': JSON.stringify('production'),
+        NODE_ENV: JSON.stringify('production'),
       },
       __PRODUCTION__: true,
       __DEVELOPMENT__: false,

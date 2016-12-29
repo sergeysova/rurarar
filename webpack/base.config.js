@@ -3,8 +3,8 @@ const { join, resolve } = require('path')
 const root = join(__dirname, '..')
 
 module.exports = {
-  entry: './client',
+  entry: '../src/client',
   outputPath: resolve(root, 'dist'),
-  context: resolve(root, 'src'),
+  context: resolve(root, 'app'),
   port: 4500,
 }

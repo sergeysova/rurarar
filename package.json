@@ -2,7 +2,6 @@
   "name": "rurarar",
   "version": "0.1.0",
   "description": "React Universal Recomposed Application with Redux And Redial",
-  "main": "index.js",
   "repository": {
     "url": "git@github.com:LestaD/rurarar.git",
     "type": "git"

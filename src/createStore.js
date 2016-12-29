@@ -1,7 +1,9 @@
 import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
-import Github from 'app/data/github'
-import reducers from './reducers'
+
+import Github from 'data/github'
+import reducers from 'store/reducers'
+
 
 /* eslint-disable no-underscore-dangle */
 /* global __DEVELOPMENT__ */

@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react'
 import { Link } from 'react-router'
+
 import { useSheet } from 'styles/jss'
 import { getColor, getShadow } from 'styles/palette'
 

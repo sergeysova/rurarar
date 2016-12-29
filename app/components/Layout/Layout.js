@@ -1,9 +1,11 @@
 import React, { PropTypes } from 'react'
 import cn from 'classnames'
 import { compose, mapProps } from 'recompose'
+
 import stylesClasses from 'styles'
 import { useSheet } from 'styles/jss'
 import { Types, selectClasses } from 'styles/mixins'
+
 
 const styles = {
   layout: {

@@ -1,9 +1,11 @@
 import React, { PropTypes } from 'react'
 import cn from 'classnames'
 import { compose, mapProps } from 'recompose'
+
 import stylesClasses from 'styles'
 import { useSheet } from 'styles/jss'
 import { Types, selectClasses, all as allMixins } from 'styles/mixins'
+
 
 const styles = {
   column: {
@@ -41,7 +43,7 @@ Column.propTypes = {
   className: PropTypes.string,
   ...Types,
   tag: PropTypes.string,
-  marginBetween: PropTypes.oneOf(['XS', 'S', 'M', 'L'])
+  marginBetween: PropTypes.oneOf(['XS', 'S', 'M', 'L']),
 }
 
 export default enhance(Column)

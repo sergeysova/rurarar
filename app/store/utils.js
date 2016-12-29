@@ -11,7 +11,7 @@ export const createActions = (actions, namespace = 'default') =>
 
       return ({ ...hash, [actionName]: action })
     },
-    {}
+    {},
   )
 
 export const createReducer = (initialState, reducers) =>

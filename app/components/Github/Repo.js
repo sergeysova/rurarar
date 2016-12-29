@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import { useSheet } from 'styles/jss'
 import { getText } from 'styles/palette'
-import { Row, Column } from 'app/components/Layout'
+import { Row, Column } from 'components/Layout'
 
 const styles = {
   githubRepo: {

@@ -1,9 +1,9 @@
 import React from 'react'
 import { Route, IndexRoute } from 'react-router'
 
-import Application from 'app/components/Application'
-import NotFoundRoute from 'app/components/NotFoundRoute'
-import { Root, About, Github } from 'app/screens'
+import Application from 'components/Application'
+import NotFoundRoute from 'components/NotFoundRoute'
+import { Root, About, Github } from 'screens'
 
 export default function createRouting() {
   return (

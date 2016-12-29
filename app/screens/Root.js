@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 import { compose } from 'recompose'
 // import { connect } from 'react-redux'
 import { Link } from 'react-router'
-import { Layout, Column } from 'app/components/Layout'
+import { Layout, Column } from 'components/Layout'
 
 
 const enhance = compose(

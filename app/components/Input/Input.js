@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react'
 import { useSheet } from 'styles/jss'
 import { getText } from 'styles/palette'
 
+
 const styles = {
   input: {
     display: 'inline-flex',

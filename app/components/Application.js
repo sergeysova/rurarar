@@ -1,11 +1,13 @@
 import React, { PropTypes } from 'react'
 import { compose } from 'recompose'
 import { connect } from 'react-redux'
+
+import { Column } from 'components/Layout'
 import { useSheet } from 'styles/jss'
 import { getColor } from 'styles/palette'
-import { Column } from 'app/components/Layout'
 
 import Header from './Header'
+
 
 const styles = {
   content: {

@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react'
 import { compose } from 'recompose'
-import { Layout } from 'app/components/Layout'
+
+import { Layout } from 'components/Layout'
 import { useSheet } from 'styles/jss'
 
 

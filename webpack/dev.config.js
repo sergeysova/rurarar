@@ -1,8 +1,10 @@
 import { resolve } from 'path'
 import { HotModuleReplacementPlugin, optimize, DefinePlugin } from 'webpack'
-const { OccurrenceOrderPlugin } = optimize
+
 import config from './base.config'
 import { loaders } from './loaders'
+
+const { OccurrenceOrderPlugin } = optimize
 
 
 export default {
@@ -17,7 +19,7 @@ export default {
   },
   cache: true,
   output: {
-    path: config.outputPath + '/',
+    path: `${config.outputPath}/`,
     filename: 'bundle.js',
     publicPath: '/dist/',
   },
@@ -25,12 +27,12 @@ export default {
     loaders,
   },
   resolve: {
-    root: resolve(__dirname, '..', 'src'),
+    root: resolve(__dirname, '..', 'app'),
   },
   plugins: [
     new DefinePlugin({
       'process.env': {
-        'NODE_ENV': JSON.stringify('development'),
+        NODE_ENV: JSON.stringify('development'),
       },
       __PRODUCTION__: false,
       __DEVELOPMENT__: true,

@@ -6,4 +6,11 @@ export default {
     margin: 0,
     padding: 0,
   },
+  a: {
+    color: getColor('Light Blue', 700),
+    textDecoration: 'none',
+  },
+  'a:hover': {
+    color: getColor('Light Blue', 900),
+  },
 }

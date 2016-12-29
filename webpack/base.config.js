@@ -4,7 +4,6 @@ const root = join(__dirname, '..')
 
 module.exports = {
   entry: '../src/client',
-  outputPath: resolve(root, 'dist'),
+  outputPath: '/dist',
   context: resolve(root, 'app'),
-  port: 4500,
 }

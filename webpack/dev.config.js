@@ -1,8 +1,8 @@
-import { resolve } from 'path'
-import { HotModuleReplacementPlugin, optimize, DefinePlugin } from 'webpack'
+import { join } from 'path'
+import { HotModuleReplacementPlugin, optimize, DefinePlugin, LoaderOptionsPlugin } from 'webpack'
 
 import config from './base.config'
-import { loaders } from './loaders'
+import { rules } from './loaders'
 
 const { OccurrenceOrderPlugin } = optimize
 
@@ -12,24 +12,31 @@ export default {
   devtool: 'eval-source-map',
   context: config.context,
   entry: {
-    main: [
-      'webpack-hot-middleware/client',
-      config.entry,
-    ],
+    main: config.entry,
   },
   cache: true,
   output: {
-    path: `${config.outputPath}/`,
+    path: join(__dirname, '..', 'dist') + '/',
+    pathinfo: true,
     filename: 'bundle.js',
     publicPath: '/dist/',
   },
   module: {
-    loaders,
+    rules,
   },
   resolve: {
-    root: resolve(__dirname, '..', 'app'),
+    modules: [
+      join(__dirname, '..', 'app'),
+      'node_modules',
+    ],
   },
   plugins: [
+    new LoaderOptionsPlugin({
+      debug: true,
+      options: {
+        context: config.context,
+      },
+    }),
     new DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('development'),
@@ -42,5 +49,4 @@ export default {
     new OccurrenceOrderPlugin(true),
     new HotModuleReplacementPlugin(),
   ],
-  port: config.port,
 }

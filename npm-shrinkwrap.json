@@ -558,9 +558,9 @@
       "resolved": "https://registry.npmjs.org/css-vendor/-/css-vendor-0.3.8.tgz"
     },
     "debug": {
-      "version": "2.5.2",
+      "version": "2.6.0",
       "from": "debug@>=2.2.0 <3.0.0",
-      "resolved": "https://registry.npmjs.org/debug/-/debug-2.5.2.tgz"
+      "resolved": "https://registry.npmjs.org/debug/-/debug-2.6.0.tgz"
     },
     "depd": {
       "version": "1.1.0",

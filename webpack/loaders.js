@@ -7,11 +7,15 @@ if (process.env.NODE_ENV !== 'production') {
   babel.presets.push('react-hmre')
 }
 
-exports.loaders = [
+exports.rules = [
   {
     test: /\.jsx?$/,
     exclude: /node_modules/,
-    loader: 'babel',
-    query: Object.assign({}, babel, { cacheDirectory: true, highlightCode: false }),
+    use: [
+      {
+        loader: 'babel-loader',
+        options: Object.assign({}, babel, { cacheDirectory: true, highlightCode: false }),
+      },
+    ],
   },
 ]

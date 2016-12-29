@@ -1,4 +1,4 @@
-import { resolve } from 'path'
+import { join } from 'path'
 import Express from 'express'
 import debug from 'debug'
 import morgan from 'morgan'
@@ -6,11 +6,9 @@ import morgan from 'morgan'
 
 /* global __DEVELOPMENT__ */
 
+const PORT = process.env.PORT || 4500
 const LOG = debug('APP:SERVER')
 const app = Express()
-let config = {
-  port: process.env.PORT || 4500,
-}
 
 app.use(morgan('combined'))
 
@@ -27,15 +25,24 @@ function clearDependencies(regexp) {
 if (__DEVELOPMENT__) {
   LOG('Enabled development mode.')
 
-  config = require('../../webpack/dev.config')
+  const config = require('../../webpack/dev.config').default
   const { watch } = require('chokidar')
 
   const webpack = require('webpack')
   const webpackDevMiddleware = require('webpack-dev-middleware')
   const webpackHotMiddleware = require('webpack-hot-middleware')
 
-  const watcher = watch(resolve(__dirname, '..', 'app'))
-  const compiler = webpack(config)
+  const watcher = watch(join(__dirname, '..', 'app'))
+  let compiler
+
+  try {
+    compiler = webpack(config)
+  }
+  catch (e) {
+    console.log('WEBPACK ERROR:', e.message)
+    throw e
+  }
+
   const middleware = webpackDevMiddleware(compiler, {
     publicPath: config.output.publicPath,
     hot: true,
@@ -72,8 +79,8 @@ if (__DEVELOPMENT__) {
 app.use('/dist', Express.static('dist'))
 app.get('*', (req, res) => require('./render').default(req, res))
 
-app.listen(config.port, err =>
+app.listen(PORT, err =>
   err
     ? LOG('ERROR', err)
-    : LOG(`Listen ${config.port} port...`),
+    : LOG(`Listen ${PORT} port...`),
 )

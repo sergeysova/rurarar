@@ -1,32 +1,40 @@
-const { resolve } = require('path')
+const { join } = require('path')
 const {
   DefinePlugin,
-  optimize: { OccurrenceOrderPlugin, DedupePlugin, UglifyJsPlugin },
+  LoaderOptionsPlugin,
+  optimize: { DedupePlugin, UglifyJsPlugin },
 } = require('webpack')
 
 const config = require('./base.config')
-const { loaders } = require('./loaders')
+const { rules } = require('./loaders')
 
 module.exports = {
   target: 'web',
   context: config.context,
   entry: {
-    main: [
-      config.entry,
-    ],
+    main: config.entry,
   },
   output: {
-    path: `${config.outputPath}/`,
+    path: join(__dirname, '..', 'dist') + '/',
     filename: 'bundle.js',
     publicPath: '/dist/',
   },
   module: {
-    loaders,
+    rules,
   },
   resolve: {
-    root: resolve(__dirname, '..', 'app'),
+    modules: [
+      join(__dirname, '..', 'app'),
+      'node_modules',
+    ],
   },
   plugins: [
+    new LoaderOptionsPlugin({
+      minimize: true,
+      options: {
+        context: config.context,
+      },
+    }),
     new DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('production'),
@@ -36,8 +44,6 @@ module.exports = {
       __CLIENT__: true,
       __SERVER__: false,
     }),
-    new DedupePlugin(),
-    new OccurrenceOrderPlugin(true),
     new UglifyJsPlugin({ compress: { warnings: false } }),
   ],
 }

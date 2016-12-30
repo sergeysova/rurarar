@@ -5,8 +5,8 @@ export const createTypes = (actions, namespace = 'default') =>
 export const createActions = (actions, namespace = 'default') =>
   actions.reduce(
     (hash, actionName) => {
-      const action = (payload, meta = {}) =>
-          ({ type: `${namespace}/${actionName}`, payload, meta })
+      const action = (payload, meta = {}) => ({ type: `${namespace}/${actionName}`, payload, meta })
+
       action.type = `${namespace}/${actionName}`
 
       return ({ ...hash, [actionName]: action })

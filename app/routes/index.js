@@ -2,8 +2,8 @@ import React from 'react'
 import { Route, IndexRoute } from 'react-router'
 
 import Application from 'components/Application'
-import NotFoundRoute from 'components/NotFoundRoute'
-import { Root, About, Github } from 'screens'
+import { Root, About, Github, NotFoundRoute } from 'components/pages'
+
 
 export default function createRouting() {
   return (

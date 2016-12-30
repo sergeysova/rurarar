@@ -3,15 +3,13 @@ import { compose, withHandlers } from 'recompose'
 import { connect } from 'react-redux'
 import { provideHooks } from 'redial'
 
-import { Layout, Column, Row } from 'components/Layout'
-import { Heading } from 'components/Heading'
-import { Button } from 'components/Button'
-import { Input } from 'components/Input'
-import Repo from 'components/Github/Repo'
-import * as actions from 'store/github/github'
+import { Column, Row, Heading, Button, Input } from 'components/atoms'
+import Repo from 'components/molecules/GithubRepo'
+import { loadTopRepo, setQuery, search } from 'store/github/github'
+
 
 const redial = {
-  fetch: ({ dispatch }) => dispatch(actions.loadTopRepo()),
+  fetch: ({ dispatch }) => dispatch(loadTopRepo()),
 }
 
 const mapStateToProps = ({ github }) => ({
@@ -25,8 +23,8 @@ const enhance = compose(
   provideHooks(redial),
   connect(mapStateToProps),
   withHandlers({
-    updateQuery: ({ dispatch }) => ({ target: { value } }) => dispatch(actions.setQuery(value)),
-    startSearch: ({ dispatch }) => () => dispatch(actions.search())
+    updateQuery: ({ dispatch }) => ({ target: { value } }) => dispatch(setQuery(value)),
+    startSearch: ({ dispatch }) => () => dispatch(search()),
   }),
 )
 

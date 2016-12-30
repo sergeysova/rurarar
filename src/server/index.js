@@ -32,7 +32,7 @@ if (__DEVELOPMENT__) {
   const webpackDevMiddleware = require('webpack-dev-middleware')
   const webpackHotMiddleware = require('webpack-hot-middleware')
 
-  const watcher = watch(join(__dirname, '..', 'app'))
+  const watcher = watch(join(__dirname, '..', '..', 'app'))
   let compiler
 
   try {

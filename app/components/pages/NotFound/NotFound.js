@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import { compose } from 'recompose'
 
-import { Layout } from 'components/Layout'
+import { Layout } from 'components/atoms'
 import { useSheet } from 'styles/jss'
 
 
@@ -17,14 +17,14 @@ const enhance = compose(
   useSheet(styles),
 )
 
-const NotFoundRoute = ({ sheet: { classes } }) => (
+const NotFound = ({ sheet: { classes } }) => (
   <Layout className={classes.notFound} padding="L">
     Page not found!
   </Layout>
 )
 
-NotFoundRoute.propTypes = {
+NotFound.propTypes = {
   sheet: PropTypes.object,
 }
 
-export default enhance(NotFoundRoute)
+export default enhance(NotFound)

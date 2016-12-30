@@ -1,7 +1,9 @@
 import React, { PropTypes } from 'react'
+
 import { useSheet } from 'styles/jss'
 import { getText } from 'styles/palette'
-import { Row, Column } from 'components/Layout'
+import { Row } from 'components/atoms'
+
 
 const styles = {
   githubRepo: {
@@ -24,7 +26,6 @@ const Button = ({ sheet: { classes }, repo }) => (
       <span>/</span>
       <a href={repo.html_url} target="_blank" rel="noopener noreferrer">{repo.name}</a>
     </Row>
-    <Column></Column>
   </Row>
 )
 

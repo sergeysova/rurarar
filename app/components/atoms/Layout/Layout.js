@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 import cn from 'classnames'
 import { compose, mapProps } from 'recompose'
 
-import stylesClasses from 'styles'
+import globalClasses from 'styles'
 import { useSheet } from 'styles/jss'
 import { Types, selectClasses } from 'styles/mixins'
 
@@ -19,7 +19,7 @@ const enhance = compose(
     ...props,
     classes: {
       ...classes,
-      additional: selectClasses(props, stylesClasses.classes, ['padding', 'justifyContent', 'alignItems']),
+      additional: selectClasses(props, globalClasses.classes, ['padding', 'justifyContent', 'alignItems']),
     },
   })),
 )

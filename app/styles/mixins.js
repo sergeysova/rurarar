@@ -1,5 +1,6 @@
 import { PropTypes } from 'react'
 
+
 export const styles = {
   justifyContent_flexStart: { justifyContent: 'flex-start' },
   justifyContent_flexEnd: { justifyContent: 'flex-end' },

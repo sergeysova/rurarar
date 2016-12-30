@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 import cn from 'classnames'
 import { compose, mapProps } from 'recompose'
 
-import stylesClasses from 'styles'
+import globalStyles from 'styles'
 import { useSheet } from 'styles/jss'
 import { Types, selectClasses, all as allMixins } from 'styles/mixins'
 
@@ -24,7 +24,7 @@ const enhance = compose(
     ...props,
     classes: {
       ...classes,
-      additional: selectClasses(props, stylesClasses.classes, allMixins, [
+      additional: selectClasses(props, globalStyles.classes, allMixins, [
         marginBetween && classes[`marginBetween_${marginBetween}`],
       ]),
     },

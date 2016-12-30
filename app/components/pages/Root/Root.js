@@ -1,13 +1,8 @@
 import React, { PropTypes } from 'react'
-import { compose } from 'recompose'
-// import { connect } from 'react-redux'
 import { Link } from 'react-router'
-import { Layout, Column } from 'components/Layout'
 
+import { Layout, Column } from 'components/atoms'
 
-const enhance = compose(
-  // connect(),
-)
 
 const Index = () => (
   <Layout padding="L" justifyContent="center">
@@ -19,4 +14,4 @@ const Index = () => (
   </Layout>
 )
 
-export default enhance(Index)
+export default Index

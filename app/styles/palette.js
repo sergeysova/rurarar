@@ -1,5 +1,6 @@
 import Material from 'google-material-color'
 
+
 export function getColor(color, shade = 500) {
   return Material.get(color, shade)
 }
@@ -12,15 +13,6 @@ export const shadowLevels = {
 
 export const transitions = {
   quick: '.2s cubic-bezier(.4,0,.2,1)',
-}
-
-export function getShadow(name) {
-  console.warn('DEPRECATED: remove getShadow() calls, use `shadowLevels[name]` instead.')
-  if (typeof shadowLevels[name] === 'undefined') {
-    throw new TypeError(`Shadow "${name}" not found! Available shadows: ${Object.keys(shadowLevels).join(', ')}`)
-  }
-
-  return shadowLevels[name]
 }
 
 export function getText(...args) {

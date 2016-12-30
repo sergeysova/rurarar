@@ -2,7 +2,7 @@ const { join } = require('path')
 const {
   DefinePlugin,
   LoaderOptionsPlugin,
-  optimize: { DedupePlugin, UglifyJsPlugin },
+  optimize: { UglifyJsPlugin },
 } = require('webpack')
 
 const config = require('./base.config')

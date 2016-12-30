@@ -2,15 +2,12 @@ import React, { PropTypes } from 'react'
 import { Link } from 'react-router'
 
 import { useSheet } from 'styles/jss'
-import { getColor, getShadow } from 'styles/palette'
+import { getColor, shadowLevels } from 'styles/palette'
+import { Column } from 'components/atoms'
 
 
 const styles = {
   header: {
-    display: 'flex',
-    flexFlow: 'column nowrap',
-    justifyContent: 'center',
-    alignItems: 'center',
     background: getColor('Light Blue'),
     lineHeight: '64px',
     height: '64px',
@@ -18,7 +15,7 @@ const styles = {
     fontFamily: 'Roboto, sans-serif',
     fontWeight: 400,
     fontSize: 18,
-    boxShadow: getShadow('appBar'),
+    boxShadow: shadowLevels.appBar,
     userSelect: 'none',
     cursor: 'default',
     zIndex: 10,
@@ -45,12 +42,12 @@ const styles = {
 }
 
 const Header = ({ sheet: { classes } }) => (
-  <header className={classes.header}>
+  <Column justifyContent="center" alignItems="center" className={classes.header} tag="header">
     <Link to="/" className={classes.homeLink}>
       <div className={classes.long}>React Universal Recomposed Application with Redux And Redial</div>
       <div className={classes.short}>RURARAR</div>
     </Link>
-  </header>
+  </Column>
 )
 
 Header.propTypes = {

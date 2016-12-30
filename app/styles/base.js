@@ -1,5 +1,6 @@
 import { getColor } from './palette'
 
+
 export default {
   body: {
     backgroundColor: getColor('Light Blue'),

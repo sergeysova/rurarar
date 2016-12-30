@@ -11,6 +11,7 @@ React Universal Recomposed Application with Redux And Redial
 - [Redial](https://github.com/markdalgleish/redial)
 - [Recompose](https://github.com/acdlite/recompose)
 - [Server Side Rendering](src/server/render.js)
+- Based on [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design/) methodology
 - Styles: [JSS](https://github.com/cssinjs/jss) with [ReactJSS](https://github.com/cssinjs/react-jss) ([preset default](https://github.com/cssinjs/jss-preset-default))
 - Also: [normalize](src/styles/normalize.js) and [Google Material Colors](https://github.com/danlevan/google-material-color)
 - Dependencies lock with [npm-shrinkwrap](npm-shrinkwrap.json) and [yarn.lock](yarn.lock)
@@ -26,6 +27,9 @@ React Universal Recomposed Application with Redux And Redial
 git clone https://github.com/LestaD/rurarar.git projectname
 cd projectname
 npm install
+
+# for production after build bundle.js:
+npm install --production
 ```
 
 ## Scripts
@@ -54,4 +58,3 @@ Bundle should be built before run
 # in production mode
 npm start
 ```
-

@@ -5,8 +5,9 @@ import ReactDOM from 'react-dom'
 import { Router, match, browserHistory } from 'react-router'
 import { Provider } from 'react-redux'
 import { trigger } from 'redial'
-import createStore from './store/create'
-import baseStyleSheet from './styles'
+
+import baseStyleSheet from 'styles'
+import createStore from './createStore'
 
 const target = document.getElementById('wbpp')
 const store = createStore(window.INITIAL_STATE || {})
@@ -14,7 +15,7 @@ const store = createStore(window.INITIAL_STATE || {})
 function render() {
   const { pathname, search, hash } = window.location
 
-  const createRouting = require('./routing').default
+  const createRouting = require('routes').default
   const routes = createRouting()
   baseStyleSheet.attach()
 
@@ -61,8 +62,9 @@ if (target) {
   let unusubscribeHistory = render()
 
   if (module.hot) {
-    module.hot.accept('./routing/index', () => {
+    module.hot.accept(['routes/index.js'], () => {
       unusubscribeHistory && unusubscribeHistory()
+
       setTimeout(() => {
         unusubscribeHistory = render()
       }, 1)

@@ -1,12 +1,12 @@
+import { join } from 'path'
 import Express from 'express'
 import debug from 'debug'
-import { watch } from 'chokidar'
 import morgan from 'morgan'
 
-import config from '../../webpack/dev.config'
 
 /* global __DEVELOPMENT__ */
 
+const PORT = process.env.PORT || 4500
 const LOG = debug('APP:SERVER')
 const app = Express()
 
@@ -25,12 +25,24 @@ function clearDependencies(regexp) {
 if (__DEVELOPMENT__) {
   LOG('Enabled development mode.')
 
+  const config = require('../../webpack/dev.config').default
+  const { watch } = require('chokidar')
+
   const webpack = require('webpack')
   const webpackDevMiddleware = require('webpack-dev-middleware')
   const webpackHotMiddleware = require('webpack-hot-middleware')
 
-  const watcher = watch(__dirname)
-  const compiler = webpack(config)
+  const watcher = watch(join(__dirname, '..', '..', 'app'))
+  let compiler
+
+  try {
+    compiler = webpack(config)
+  }
+  catch (e) {
+    console.log('WEBPACK ERROR:', e.message)
+    throw e
+  }
+
   const middleware = webpackDevMiddleware(compiler, {
     publicPath: config.output.publicPath,
     hot: true,
@@ -51,24 +63,24 @@ if (__DEVELOPMENT__) {
   watcher.on('ready', () => {
     watcher.on('all', (e, path) => {
       LOG('Clearing module cache', e, path)
-      LOG('Cleared:', clearDependencies(/[/\\]src[/\\]/))
+      LOG('Cleared:', clearDependencies(/[/\\]app[/\\]/))
     })
   })
 
   compiler.plugin('done', () => {
     LOG('Clearing react module cache')
-    LOG('Cleared:', clearDependencies(/[/\\]src[/\\]/))
+    LOG('Cleared:', clearDependencies(/[/\\]app[/\\]/))
   })
 
-  delete require.cache[require.resolve('server/render')]
+  delete require.cache[require.resolve('./render')]
 } // if (__DEVELOPMENT__)
 
 
 app.use('/dist', Express.static('dist'))
-app.get('*', (req, res) => require('server/render').default(req, res))
+app.get('*', (req, res) => require('./render').default(req, res))
 
-app.listen(config.port, err =>
+app.listen(PORT, err =>
   err
     ? LOG('ERROR', err)
-    : LOG(`Listen ${config.port} port...`),
+    : LOG(`Listen ${PORT} port...`),
 )

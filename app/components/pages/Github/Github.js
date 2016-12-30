@@ -9,7 +9,7 @@ import { loadTopRepo, setQuery, search } from 'store/github/github'
 
 
 const redial = {
-  fetch: ({ dispatch }) => dispatch(loadTopRepo()),
+  defer: ({ dispatch }) => dispatch(loadTopRepo()),
 }
 
 const mapStateToProps = ({ github }) => ({

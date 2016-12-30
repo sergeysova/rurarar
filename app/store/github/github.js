@@ -33,10 +33,10 @@ export function loadTopRepo() {
 export function search() {
   return async (dispatch, getState, { github }) => {
     const query = getState().github.query
-    dispatch(A.cleanSearch())
-    dispatch(A.setLoading(true))
 
     if (!query || query.length < 3) return null
+    dispatch(A.cleanSearch())
+    dispatch(A.setLoading(true))
 
     const { total_count, items } = await github.searchRepo(query)
 

@@ -16,7 +16,7 @@ module.exports = {
       ref: "origin/master",
       repo: "git@github.com:lestad/rurarar.git",
       path: "/home/www/top.lestad/rurarar",
-      'post-deploy': 'npm install && npm run build && npm prune --production && pm2 startOrRestart process.js --env production',
+      'post-deploy': 'npm install && npm run build && npm prune --production && pm2 startOrRestart ecosystem.config.js --env production',
     },
   },
 }

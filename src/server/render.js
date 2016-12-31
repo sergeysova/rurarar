@@ -3,7 +3,7 @@ import { trigger } from 'redial'
 import { Provider } from 'react-redux'
 import { renderToString } from 'react-dom/server'
 import { match, RouterContext } from 'react-router'
-import { SheetsRegistryProvider, SheetsRegistry } from 'react-jss'
+import styleSheet from 'styled-components/lib/models/StyleSheet'
 
 import createRouting from 'routes'
 import baseStyles from 'styles'
@@ -20,7 +20,6 @@ function renderPage(html, state, styles) {
       <head>
         <title>RURARAR</title>
         <link href="https://fonts.googleapis.com/css?family=Roboto:300,400|Titillium+Web" rel="stylesheet" />
-        <style type="text/css" data-jss="" data-meta="base-styles">${baseStyles.toString()}</style>
         <style type="text/css" id="ssrs">${styles}</style>
       </head>
       <body>
@@ -35,6 +34,8 @@ function renderPage(html, state, styles) {
 export default function handleRender(req, res) {
   const routes = createRouting()
   const store = createStore({})
+  styleSheet.sheet && styleSheet.flush()
+  baseStyles()
 
   match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
     if (error) {
@@ -54,18 +55,15 @@ export default function handleRender(req, res) {
 
       trigger('fetch', renderProps.components, locals)
         .then(() => {
-          const sheetsRegistry = new SheetsRegistry()
-
           const state = store.getState()
           const result = renderToString(
-            <SheetsRegistryProvider registry={sheetsRegistry}>
-              <Provider store={store}>
-                <RouterContext {...renderProps} />
-              </Provider>
-            </SheetsRegistryProvider>,
+            <Provider store={store}>
+              <RouterContext {...renderProps} />
+            </Provider>,
           )
+          const styles = styleSheet.rules().map(rule => rule.cssText).join('\n')
 
-          res.status(200).send(renderPage(result, state, sheetsRegistry.toString()))
+          res.status(200).send(renderPage(result, state, styles))
         })
         .catch(err => {
           if (__DEVELOPMENT__) {

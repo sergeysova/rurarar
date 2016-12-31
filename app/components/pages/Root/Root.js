@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import { Link } from 'react-router'
 
-import { Layout, Column } from 'components/atoms'
+import { Layout, Column } from 'components/molecules'
 
 
 const Index = () => (

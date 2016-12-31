@@ -1,15 +1,10 @@
-import { jss } from './jss'
+import { injectGlobal } from 'styled-components'
+
 import normalize from './normalize'
 import baseStyles from './base'
 
-import { styles } from './mixins'
 
-
-// base styles
-export default jss.createStyleSheet({
-  '@global': {
-    ...normalize,
-    ...baseStyles,
-  },
-  ...styles,
-}, { meta: 'base-styles' })
+export default () => injectGlobal`
+  ${normalize}
+  ${baseStyles}
+`

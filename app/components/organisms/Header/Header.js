@@ -3,7 +3,7 @@ import { Link } from 'react-router'
 
 import { useSheet } from 'styles/jss'
 import { getColor, shadowLevels } from 'styles/palette'
-import { Column } from 'components/atoms'
+import { Column } from 'components/molecules'
 
 
 const styles = {

@@ -9,7 +9,7 @@ const { OccurrenceOrderPlugin } = optimize
 
 export default {
   target: 'web',
-  devtool: 'eval-source-map',
+  devtool: 'source-map',
   context: config.context,
   entry: {
     main: config.entry,

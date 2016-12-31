@@ -1,6 +1,3 @@
 export Button from './Button'
 export Input from './Input'
 export Heading from './Heading'
-export Layout from './Layout'
-export Column from './Column'
-export Row from './Row'

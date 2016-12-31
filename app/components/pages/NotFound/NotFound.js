@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import { compose } from 'recompose'
 
-import { Layout } from 'components/atoms'
+import { Layout } from 'components/molecules'
 import { useSheet } from 'styles/jss'
 
 

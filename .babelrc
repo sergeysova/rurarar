@@ -8,6 +8,7 @@
   ],
   "plugins": [
     "transform-react-inline-elements",
-    "transform-react-constant-elements"
+    "transform-react-constant-elements",
+    "styled-components"
   ]
 }

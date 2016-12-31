@@ -1,17 +1,19 @@
+import { css } from 'styled-components'
+
 import { getColor } from './palette'
 
 
-export default {
-  body: {
-    backgroundColor: getColor('Light Blue'),
-    margin: 0,
-    padding: 0,
+export default css`
+  body {
+    background-color: ${getColor('Light Blue')};
+    margin: 0;
+    padding: 0;
+  }
+  a {
+    color: ${getColor('Light Blue', 700)};
+    text-decoration: 'none';
   },
-  a: {
-    color: getColor('Light Blue', 700),
-    textDecoration: 'none',
-  },
-  'a:hover': {
-    color: getColor('Light Blue', 900),
-  },
-}
+  a:hover {
+    color: ${getColor('Light Blue', 900)};
+  }
+`

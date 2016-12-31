@@ -3,7 +3,8 @@ import { compose, withHandlers } from 'recompose'
 import { connect } from 'react-redux'
 import { provideHooks } from 'redial'
 
-import { Column, Row, Heading, Button, Input } from 'components/atoms'
+import { Heading, Button, Input } from 'components/atoms'
+import { Column, Row } from 'components/molecules'
 import Repo from 'components/molecules/GithubRepo'
 import { loadTopRepo, setQuery, search } from 'store/github/github'
 

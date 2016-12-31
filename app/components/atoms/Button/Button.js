@@ -1,46 +1,34 @@
-import React, { PropTypes } from 'react'
-import { useSheet } from 'styles/jss'
+import styled from 'styled-components'
+
 import { getColor, getText, shadowLevels, transitions, flatValues } from 'styles/palette'
 
-const styles = {
-  button: {
-    display: 'inline-flex',
-    flexFlow: 'row nowrap',
-    backgroundColor: getColor('Light Blue'),
-    border: 'none',
-    borderRadius: '2px',
-    color: getText('Black'),
-    boxShadow: shadowLevels.button,
-    padding: '0 16px',
-    whiteSpace: 'nowrap',
-    cursor: 'pointer',
-    fontWeight: 600,
-    lineHeight: 2.6,
-    transition: flatValues({
-      'box-shadow': transitions.quick,
-      'background-color': transitions.quick,
-    }),
-    '&:hover': {
-      boxShadow: shadowLevels.buttonHover,
-      backgroundColor: getColor('Light Blue', 600),
-    },
-    '&:focus': {
-      outline: 'rgba(0,0,0,.8) auto 3px',
-    },
-  },
-}
 
-const Button = ({ children, onClick, sheet: { classes } }) => (
-  <button onClick={onClick} className={classes.button}>
-    {children}
-  </button>
-)
+const Button = styled.button`
+  display: inline-flex;
+  flex-flow: row nowrap;
+  background-color: ${getColor('Light Blue')};
+  border: none;
+  border-radius: 2px;
+  color: ${getText('Black')};
+  box-shadow: ${shadowLevels.button};
+  padding: 0 16px;
+  white-space: nowrap;
+  cursor: pointer;
+  font-weight: 600;
+  line-height: 2.6;
+  transition: ${flatValues({
+    'box-shadow': transitions.quick,
+    'background-color': transitions.quick,
+  })};
 
-Button.propTypes = {
-  sheet: PropTypes.object,
+  &:hover {
+    box-shadow: ${shadowLevels.buttonHover};
+    background-color: ${getColor('Light Blue', 600)};
+  }
 
-  children: PropTypes.node,
-  onClick: PropTypes.func,
-}
+  &:focus {
+    outline: rgba(0,0,0,.8) auto 3px;
+  }
+`
 
-export default useSheet(styles)(Button)
+export default Button

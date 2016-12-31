@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 
-import { Column } from 'components/atoms'
+import { Column } from 'components/molecules'
 import { Header, Footer, Container } from 'components/organisms'
 
 

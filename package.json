@@ -18,6 +18,7 @@
   "dependencies": {
     "axios": "^0.15.3",
     "babel-core": "^6.17.0",
+    "babel-plugin-styled-components": "0.0.2",
     "babel-plugin-transform-react-constant-elements": "^6.9.1",
     "babel-plugin-transform-react-inline-elements": "^6.8.0",
     "babel-polyfill": "https://registry.npmjs.org/babel-polyfill/-/babel-polyfill-6.20.0.tgz",
@@ -42,7 +43,8 @@
     "recompose": "^0.21.0",
     "redial": "^0.5.0",
     "redux": "^3.6.0",
-    "redux-thunk": "^2.1.0"
+    "redux-thunk": "^2.1.0",
+    "styled-components": "https://registry.npmjs.org/styled-components/-/styled-components-1.2.1.tgz"
   },
   "devDependencies": {
     "babel-eslint": "^7.1.1",

@@ -5,7 +5,7 @@ import { compose } from 'recompose'
 import { useSheet } from 'styles/jss'
 import { getColor } from 'styles/palette'
 
-import { Column } from 'components/atoms'
+import { Column } from 'components/molecules'
 
 
 const styles = {

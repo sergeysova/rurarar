@@ -3,7 +3,7 @@ import cn from 'classnames'
 import { compose } from 'recompose'
 
 import { useSheet } from 'styles/jss'
-import { Column } from 'components/atoms'
+import { Column } from 'components/molecules'
 
 
 const styles = {

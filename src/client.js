@@ -6,8 +6,10 @@ import { Router, match, browserHistory } from 'react-router'
 import { Provider } from 'react-redux'
 import { trigger } from 'redial'
 
-import baseStyleSheet from 'styles'
+import baseStyles from 'styles'
 import createStore from './createStore'
+
+/* global __DEVELOPMENT__ */
 
 const target = document.getElementById('wbpp')
 const store = createStore(window.INITIAL_STATE || {})
@@ -17,7 +19,7 @@ function render() {
 
   const createRouting = require('routes').default
   const routes = createRouting()
-  baseStyleSheet.attach()
+  baseStyles()
 
   match({ routes, location: `${pathname}${search}${hash}` }, () => {
     ReactDOM.render(
@@ -26,8 +28,10 @@ function render() {
       </Provider>,
       target,
       () => {
-        const JssStyles = document.getElementById('ssrs')
-        JssStyles && JssStyles.parentNode.removeChild(JssStyles)
+        if (__DEVELOPMENT__) {
+          const ServerRenderedStyles = document.getElementById('ssrs')
+          ServerRenderedStyles && ServerRenderedStyles.parentNode.removeChild(ServerRenderedStyles)
+        }
       },
     )
   })

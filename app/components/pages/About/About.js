@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import { Link } from 'react-router'
 
-import { Row } from 'components/atoms'
+import { Row } from 'components/molecules'
 
 
 const About = () => (

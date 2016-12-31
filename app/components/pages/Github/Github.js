@@ -4,8 +4,7 @@ import { connect } from 'react-redux'
 import { provideHooks } from 'redial'
 
 import { Heading, Button, Input } from 'components/atoms'
-import { Column, Row } from 'components/molecules'
-import Repo from 'components/molecules/GithubRepo'
+import { Column, Row, GithubRepo } from 'components/molecules'
 import { loadTopRepo, setQuery, search } from 'store/github/github'
 
 
@@ -47,7 +46,7 @@ const Github = ({ list, updateQuery, query, startSearch, loading }) => (
         loading &&
           <Row padding="L" justifyContent="center">Loading...</Row>
       }
-      {list.map(item => <Repo repo={item} key={item.id} />)}
+      {list.map(item => <GithubRepo repo={item} key={item.id} />)}
     </Column>
   </Column>
 )

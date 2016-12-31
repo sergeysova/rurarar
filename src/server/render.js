@@ -35,7 +35,6 @@ export default function handleRender(req, res) {
   const routes = createRouting()
   const store = createStore({})
   styleSheet.sheet && styleSheet.flush()
-  baseStyles()
 
   match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
     if (error) {

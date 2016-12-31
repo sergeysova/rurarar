@@ -1,57 +1,56 @@
 import React, { PropTypes } from 'react'
+import styled from 'styled-components'
 import { Link } from 'react-router'
 
-import { useSheet } from 'styles/jss'
 import { getColor, shadowLevels } from 'styles/palette'
-import { Column } from 'components/molecules'
 
 
-const styles = {
-  header: {
-    background: getColor('Light Blue'),
-    lineHeight: '64px',
-    height: '64px',
-    color: 'white',
-    fontFamily: 'Roboto, sans-serif',
-    fontWeight: 400,
-    fontSize: 18,
-    boxShadow: shadowLevels.appBar,
-    userSelect: 'none',
-    cursor: 'default',
-    zIndex: 10,
-  },
-  homeLink: {
-    display: 'flex',
-    color: 'white',
-    textDecoration: 'none',
-  },
-  long: {
-    display: 'flex',
-  },
-  short: {
-    display: 'none',
-  },
-  '@media (max-width: 550px)': {
-    long: {
-      display: 'none',
-    },
-    short: {
-      display: 'flex',
-    },
-  },
-}
+const HeaderWrapper = styled.header`
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  background: ${getColor('Light Blue')};
+  line-height: 64px;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  box-shadow: ${shadowLevels.appBar};
+  user-select: none;
+  cursor: default;
+  z-index: 10;
+`
 
-const Header = ({ sheet: { classes } }) => (
-  <Column justifyContent="center" alignItems="center" className={classes.header} tag="header">
-    <Link to="/" className={classes.homeLink}>
-      <div className={classes.long}>React Universal Recomposed Application with Redux And Redial</div>
-      <div className={classes.short}>RURARAR</div>
-    </Link>
-  </Column>
+const HomeLink = styled(Link)`
+  display: flex;
+  color: white;
+  text-decoration: none;
+`
+
+const FullTitle = styled.div`
+  display: flex;
+
+  @media (max-width: 550px) {
+    display: none;
+  }
+`
+
+const ShortTitle = styled.div`
+  display: none;
+
+  @media (max-width: 550px) {
+    display: flex;
+  }
+`
+
+const Header = () => (
+  <HeaderWrapper>
+    <HomeLink to="/">
+      <FullTitle>React Universal Recomposed Application with Redux And Redial</FullTitle>
+      <ShortTitle>RURARAR</ShortTitle>
+    </HomeLink>
+  </HeaderWrapper>
 )
 
-Header.propTypes = {
-  sheet: PropTypes.object,
-}
-
-export default useSheet(styles)(Header)
+export default Header

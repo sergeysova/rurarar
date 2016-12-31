@@ -2,7 +2,7 @@ import { PropTypes } from 'react'
 import { css } from 'styled-components'
 
 
-const namesMapping = {
+export const namesMapping = {
   justifyContent: 'justify-content',
   alignItems: 'align-items',
 

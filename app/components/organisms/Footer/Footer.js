@@ -1,35 +1,24 @@
 import React, { PropTypes } from 'react'
-import cn from 'classnames'
-import { compose } from 'recompose'
-
-import { useSheet } from 'styles/jss'
-import { getColor } from 'styles/palette'
+import styled from 'styled-components'
 
 import { Column } from 'components/molecules'
+import { getColor } from 'styles/palette'
 
 
-const styles = {
-  footer: {
-    background: getColor('Light Blue'),
-    lineHeight: '80px',
-    color: getColor('White', 'Hint'),
-  },
-}
+const FooterContainer = styled(Column)`
+  background-color: ${getColor('Light Blue')};
+  line-height: 80px;
+  color: ${getColor('White', 'Hint')};
+`
 
-const enhance = compose(
-  useSheet(styles),
-)
-
-const Footer = ({ className, sheet: { classes } }) => (
-  <Column justifyContent="center" alignItems="center" tag="footer" className={cn(classes.footer, className)}>
+const Footer = ({ className }) => (
+  <FooterContainer tag="footer" justifyContent="center" alignItems="center" className={className}>
     RuRaRaR
-  </Column>
+  </FooterContainer>
 )
 
 Footer.propTypes = {
-  sheet: PropTypes.object,
-
   className: PropTypes.string,
 }
 
-export default enhance(Footer)
+export default Footer

@@ -1,30 +1,21 @@
 import React, { PropTypes } from 'react'
-import { compose } from 'recompose'
+import styled from 'styled-components'
 
-import { Layout } from 'components/molecules'
-import { useSheet } from 'styles/jss'
+import { namesMapping } from 'styles/mixins'
 
 
-const styles = {
-  notFound: {
-    justifyContent: 'center',
-    fontSize: 32,
-    alignItems: 'center',
-  },
-}
+const NotFoundWrapper = styled.div`
+  display: flex;
+  padding: ${namesMapping.L}
+  justifyContent: center;
+  font-size: 32px;
+  align-items: center;
+`
 
-const enhance = compose(
-  useSheet(styles),
-)
-
-const NotFound = ({ sheet: { classes } }) => (
-  <Layout className={classes.notFound} padding="L">
+const NotFound = () => (
+  <NotFoundWrapper>
     Page not found!
-  </Layout>
+  </NotFoundWrapper>
 )
 
-NotFound.propTypes = {
-  sheet: PropTypes.object,
-}
-
-export default enhance(NotFound)
+export default NotFound

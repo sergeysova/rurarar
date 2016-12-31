@@ -1,37 +1,24 @@
-import React, { PropTypes } from 'react'
-import cn from 'classnames'
-import { useSheet } from 'styles/jss'
+import styled, { css } from 'styled-components'
 
+const heading = css`
+  display: flex;
+  flex-flow: row nowrap;
+  white-space: nowrap;
+  font-weight: 600;
+`
 
-const styles = {
-  heading: {
-    display: 'flex',
-    flexFlow: 'row nowrap',
-    margin: '0 16px',
-    whiteSpace: 'nowrap',
-    fontWeight: 600,
-    lineHeight: 2.6,
-  },
-  h1: {
-    fontSize: '34px',
-    margin: '0 12px',
-    fontWeight: 300,
-  },
-  h2: {},
-  h3: {},
-}
+export const H1 = styled.h1`
+  ${heading}
+  font-size: 34px;
+  margin: 0 12px;
+  font-weight: 300;
+  line-height: 2.6;
+`
 
-const Heading = ({ children, sheet: { classes }, level = 1 }) => (
-  <div className={cn(classes.heading, classes[`h${level}`])}>
-    {children}
-  </div>
-)
-
-Heading.propTypes = {
-  sheet: PropTypes.object,
-
-  children: PropTypes.node,
-  level: PropTypes.oneOf([1, 2, 3]),
-}
-
-export default useSheet(styles)(Heading)
+export const H2 = styled.h2`
+  ${heading}
+  font-size: 28px;
+  margin: 0 12px;
+  font-weight: 300;
+  line-height: 2.2;
+`

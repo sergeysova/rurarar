@@ -12,7 +12,10 @@ export default {
   devtool: 'source-map',
   context: config.context,
   entry: {
-    main: config.entry,
+    main: [
+      'webpack-hot-middleware/client',
+      config.entry,
+    ],
   },
   cache: true,
   output: {

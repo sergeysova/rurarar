@@ -31,7 +31,7 @@ const enhance = compose(
 const Github = ({ list, updateQuery, query, startSearch, loading }) => (
   <Column marginBetween="M">
     <Row alignItems="center" justifyContent="spaceBetween">
-      {/* <H1>Github API usage</H1> */}
+      <H1>Github API usage</H1>
       <Row marginBetween="M">
         <Input value={query} onChange={updateQuery} />
         <Button onClick={startSearch}>Search</Button>

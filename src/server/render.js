@@ -3,7 +3,6 @@ import { trigger } from 'redial'
 import { Provider } from 'react-redux'
 import { renderToString } from 'react-dom/server'
 import { match, RouterContext } from 'react-router'
-import styleSheet from 'styled-components/lib/models/StyleSheet'
 
 import createRouting from 'routes'
 import baseStyles from 'styles'
@@ -34,6 +33,7 @@ function renderPage(html, state, styles) {
 export default function handleRender(req, res) {
   const routes = createRouting()
   const store = createStore({})
+  const styleSheet = require('styled-components/lib/models/StyleSheet')
   styleSheet.sheet && styleSheet.flush()
 
   match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {

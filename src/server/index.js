@@ -2,6 +2,7 @@ import { join } from 'path'
 import Express from 'express'
 import debug from 'debug'
 import morgan from 'morgan'
+import { tap, curryN, keys, pipe, filter, reject, map } from 'ramda'
 
 
 /* global __DEVELOPMENT__ */
@@ -12,18 +13,17 @@ const app = Express()
 
 app.use(morgan('combined'))
 
-function clearDependencies(regexp) {
-  return Object.keys(require.cache)
-    .filter(e => !((/node_modules/g).test(e)))
-    .filter(id => regexp.test(id))
-    .map(id => {
-      delete require.cache[id]
-      return id
-    })
-}
-
 if (__DEVELOPMENT__) {
   LOG('Enabled development mode.')
+
+  const regexpTest = curryN(2, (regexp, item) => regexp.test(item))
+  const clearDependencies = regexp => pipe(
+    keys,
+    reject(regexpTest(/node_modules/)),
+    filter(regexpTest(regexp)),
+    map(tap(e => LOG('+:', regexp, e))),
+    map(tap(id => delete require.cache[id])),
+  )(require.cache)
 
   const config = require('../../webpack/dev.config').default
   const { watch } = require('chokidar')
@@ -39,7 +39,7 @@ if (__DEVELOPMENT__) {
     compiler = webpack(config)
   }
   catch (e) {
-    console.log('WEBPACK ERROR:', e.message)
+    LOG('WEBPACK ERROR:', e.message)
     throw e
   }
 
@@ -62,17 +62,18 @@ if (__DEVELOPMENT__) {
 
   watcher.on('ready', () => {
     watcher.on('all', (e, path) => {
-      LOG('Clearing module cache', e, path)
-      LOG('Cleared:', clearDependencies(/[/\\]app[/\\]/))
+      LOG('Clearing module cache:', e, path)
+      LOG('Cleared:', clearDependencies(/[/\\](app|src)[/\\]/))
+      delete require.cache[require.resolve('./render')]
     })
   })
 
   compiler.plugin('done', () => {
     LOG('Clearing react module cache')
-    LOG('Cleared:', clearDependencies(/[/\\]app[/\\]/))
+    // LOG('Cleared:', clearDependencies(/[/\\]app[/\\]/))
+    LOG('Cleared:', clearDependencies(/[/\\](app|src)[/\\]/))
+    delete require.cache[require.resolve('./render')]
   })
-
-  delete require.cache[require.resolve('./render')]
 } // if (__DEVELOPMENT__)
 
 

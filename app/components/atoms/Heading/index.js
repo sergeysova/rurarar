@@ -1,5 +1,1 @@
-import { H1 } from './Heading'
-
-export { H2 } from './Heading'
-
-export default H1
+export { H1, H2 } from './Heading'

@@ -2692,6 +2692,11 @@
       "from": "railroad-diagrams@>=1.0.0 <2.0.0",
       "resolved": "https://registry.npmjs.org/railroad-diagrams/-/railroad-diagrams-1.0.0.tgz"
     },
+    "ramda": {
+      "version": "0.23.0",
+      "from": "ramda@latest",
+      "resolved": "https://registry.npmjs.org/ramda/-/ramda-0.23.0.tgz"
+    },
     "randexp": {
       "version": "0.4.4",
       "from": "randexp@>=0.4.2 <0.5.0",

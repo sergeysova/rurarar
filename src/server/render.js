@@ -5,7 +5,6 @@ import { renderToString } from 'react-dom/server'
 import { match, RouterContext } from 'react-router'
 
 import createRouting from 'routes'
-import baseStyles from 'styles'
 import createStore from '../createStore'
 
 

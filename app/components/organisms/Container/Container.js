@@ -1,16 +1,18 @@
 import React, { PropTypes } from 'react'
 import styled from 'styled-components'
 
-import { Column } from 'components/molecules'
+import { Column, Row } from 'components/molecules'
 
 
-const Content = styled(Column)`
+const Content = styled(Row)`
   min-height: 84vh;
   background: white;
+  justify-content: center;
 `
 
 const BaseContainer = styled(Column)`
-  min-width: 800px;
+  max-width: 800px;
+  width: 100%;
 `
 
 const Container = ({ className, children }) => (

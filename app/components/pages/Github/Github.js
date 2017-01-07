@@ -3,7 +3,7 @@ import { compose, withHandlers } from 'recompose'
 import { connect } from 'react-redux'
 import { provideHooks } from 'redial'
 
-import { Heading, Button, Input } from 'components/atoms'
+import { H1, Button, Input } from 'components/atoms'
 import { Column, Row, GithubRepo } from 'components/molecules'
 import { loadTopRepo, setQuery, search } from 'store/github/github'
 
@@ -31,7 +31,7 @@ const enhance = compose(
 const Github = ({ list, updateQuery, query, startSearch, loading }) => (
   <Column marginBetween="M">
     <Row alignItems="center" justifyContent="spaceBetween">
-      <Heading>Github API usage</Heading>
+      {/* <H1>Github API usage</H1> */}
       <Row marginBetween="M">
         <Input value={query} onChange={updateQuery} />
         <Button onClick={startSearch}>Search</Button>
@@ -40,7 +40,7 @@ const Github = ({ list, updateQuery, query, startSearch, loading }) => (
     <Column>
       {
         list.length === 0 && !loading &&
-          <Row padding="L">Nothing found</Row>
+          <Row padding="L" justifyContent="center">Nothing found</Row>
       }
       {
         loading &&

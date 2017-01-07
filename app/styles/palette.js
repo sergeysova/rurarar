@@ -1,4 +1,5 @@
 import Material from 'google-material-color'
+import { map, keys, join, pipe } from 'ramda'
 
 
 export function getColor(color, shade = 500) {
@@ -21,11 +22,12 @@ export function getText(...args) {
 
 /**
  * Convert { a: '123', b: '456' } to 'a 123, b 456'
+ *
  * @param  {Object} object [description]
  * @return {String}        [description]
  */
-export function flatValues(object) {
-  return Object.keys(object)
-    .map(key => `${key} ${object[key]}`)
-    .join(', ')
-}
+export const flatValues = object => pipe(
+  keys,
+  map(key => `${key} ${object[key]}`),
+  join(', '),
+)(object)

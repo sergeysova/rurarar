@@ -2,6 +2,13 @@ import { PropTypes } from 'react'
 import { css } from 'styled-components'
 
 
+export const sizes = {
+  XS: '4px',
+  S: '8px',
+  M: '14px',
+  L: '24px',
+}
+
 export const namesMapping = {
   justifyContent: 'justify-content',
   alignItems: 'align-items',
@@ -11,10 +18,7 @@ export const namesMapping = {
   spaceAround: 'space-around',
   spaceBetween: 'space-between',
 
-  XS: '4px',
-  S: '8px',
-  M: '14px',
-  L: '24px',
+  ...sizes,
 }
 
 export const mapStyle = propName => props => {

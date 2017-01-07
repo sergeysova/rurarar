@@ -25,15 +25,16 @@ const enhance = compose(
   withHandlers({
     updateQuery: ({ dispatch }) => ({ target: { value } }) => dispatch(setQuery(value)),
     startSearch: ({ dispatch }) => () => dispatch(search()),
+    onInputKey: ({ dispatch }) => event => event.key === 'Enter' && dispatch(search()),
   }),
 )
 
-const Github = ({ list, updateQuery, query, startSearch, loading }) => (
+const Github = ({ list, updateQuery, query, startSearch, loading, onInputKey }) => (
   <Column marginBetween="M">
     <Row alignItems="center" justifyContent="spaceBetween">
       <H1>Github API usage</H1>
       <Row marginBetween="M">
-        <Input value={query} onChange={updateQuery} />
+        <Input value={query} onChange={updateQuery} onKeyPress={onInputKey} />
         <Button onClick={startSearch}>Search</Button>
       </Row>
     </Row>
@@ -58,6 +59,7 @@ Github.propTypes = {
   foundCount: PropTypes.number,
   updateQuery: PropTypes.func,
   startSearch: PropTypes.func,
+  onInputKey: PropTypes.func,
 }
 
 export default enhance(Github)

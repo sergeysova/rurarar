@@ -13,7 +13,7 @@ React Universal Recomposed Application with Redux And Redial
 - [Server Side Rendering](src/server/render.js)
 - Based on [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design/) methodology
 - Styles: [Styled Components](https://github.com/styled-components/styled-components)
-- Also: [normalize](src/styles/normalize.js) and [Google Material Colors](https://github.com/danlevan/google-material-color)
+- Also: [normalize](https://github.com/lestad/styled-normalize) and [Google Material Colors](https://github.com/danlevan/google-material-color)
 - Dependencies lock with [npm-shrinkwrap](npm-shrinkwrap.json) and [yarn.lock](yarn.lock)
 
 
